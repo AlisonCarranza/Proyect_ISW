@@ -14,10 +14,9 @@ router.post('/api/rec-password', async (req, res)=>{
     //equivale a escribir new user({email:email, password:password         
           /*VERIFICANDO SI EXISTE YA UN CORREO EN LA BASE*/
           if(UserR = await user.findOne({email:email_l})) {     
-            var tempPassword= randomBytes(10).toString('hex');
-            /*Encriptacion y desencripcion de contraseñas
             var crypto= require('crypto');
             var tempPassword= crypto.randomBytes(10).toString('hex');
+            /*Encriptacion y desencripcion de contraseñas
             const salt = bcrypt.genSaltSync();
             const hash= bcrypt.hashSync(tempPassword, salt);
             await user.updateOne({email:email_l},{$set:{temporal_pass:hash}});

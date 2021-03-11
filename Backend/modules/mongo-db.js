@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 let bd ='paratus';
 let port = 27017;
-let host = 'localHost'
+let host = 'localhost'
 
 class Database{
   constructor(){

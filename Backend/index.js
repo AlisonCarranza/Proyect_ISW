@@ -1,22 +1,23 @@
 //paquetes
 var express=require('express');
 var cors=require('cors');
-var bodyParser=require('body-parser');
-
-//rutas
-var database= require('./modules/mongo-db');
 
 //funcionalidades paquetes
 var app=express();
 
+//rutas
+var database= require('./modules/mongo-db');
+
+//middleware.
+
 //permite peticiones de otros tipos de origenes.
+app.use(express.json());
 app.use(cors());
 
 //permite el acceso a los parametros enviados mediante post , es decir al cuerpo de la peticion.
 app.use(require ('./routes/rec-password'));
 
 
-//middleware.
 
 
 
