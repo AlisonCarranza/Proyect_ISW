@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-let bd ='DB';
+let bd ='paratus';
 let port = 27017;
 let host = 'localHost'
 
