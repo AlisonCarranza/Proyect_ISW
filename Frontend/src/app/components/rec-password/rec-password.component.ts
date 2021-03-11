@@ -6,14 +6,15 @@ import Swal from "sweetalert2/dist/sweetalert2.js";
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-rec-password',
+  selector: 'abe-rec-password',
   templateUrl: './rec-password.component.html',
-  styleUrls: ['./rec-password.component.css']
+  styleUrls: ['./rec-password.component.scss']
 })
 export class RecPasswordComponent implements OnInit {
   user={
     email:''
   }
+
   constructor(
     private authService: AuthService,
     private router:Router

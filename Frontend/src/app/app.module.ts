@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+//Import de dependencias
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // If You need animations
@@ -16,7 +17,8 @@ import { TokenInterceptorService } from "./services/token-interceptor.service";
 import { AuthService } from "./services/auth.service";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RecPasswordComponent } from './components/rec-password/rec-password.component';
+import { RecPasswordComponent } from "./components/rec-password/rec-password.component";
+
 
 @NgModule({
   declarations: [
@@ -45,10 +47,9 @@ import { RecPasswordComponent } from './components/rec-password/rec-password.com
       multi: true
       
     }
+    
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })
-
-
 export class AppModule { }
