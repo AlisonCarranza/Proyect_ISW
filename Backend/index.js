@@ -13,8 +13,7 @@ var app=express();
 app.use(cors());
 
 //permite el acceso a los parametros enviados mediante post , es decir al cuerpo de la peticion.
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extend:true}));
+app.use(require ('./routes/rec-password'));
 
 
 //middleware.
