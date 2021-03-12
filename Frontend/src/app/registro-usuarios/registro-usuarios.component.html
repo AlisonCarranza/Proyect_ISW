@@ -1,48 +1,60 @@
-  <div class="container-fluid">
+<div class="container-fluid">
+  <div class="row" id="login">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-xl-4 sombras mx-auto" style="background-color: white;">
 
-    <div class="row" id="login">
-      <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-xl-4 sombras mx-auto" style="background-color: white;">
-        
-        <form id="form-login">
-          
-          <h5 class="col-5 titulo">Registro</h5>
-          
-          <div class="form-group espaciado">
-            <input type="text" placeholder="Nombre Completo" class="form-control rounded-pill">
+      <form [formGroup]="formRegistro" id="form-login">
 
+        <h5 class="col-5 titulo">Registro</h5>
+
+        <div class="form-group espaciado">
+           <input [ngClass]="{'is-invalid errorFondo':nombre.invalid && (nombre.dirty || nombre.touched)}" formControlName="nombre" type="text" placeholder="Nombre Completo" class="form-control rounded-pill">
+
+           <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="error">
+                <span *ngIf="nombre.errors.required">El campo es obligatorio</span>
+                <span *ngIf="nombre.errors.maxlength">El tamaño maximo del campo es de 10 caracteres</span>
+           </div>
+        </div>
+
+        <div class="form-group espaciado">
+          <input formControlName="userName" type="text" placeholder="Nombre Usuario" class="form-control rounded-pill">
+        </div>
+
+        <div class="form-group espaciado">
+          <input formControlName="correo" type="email" placeholder="Email" class="form-control rounded-pill">
+        </div>
+
+        <div class="form-group espaciado">
+          <input formControlName="telefono" type="telefono" placeholder="Telefono movil" class="form-control rounded-pill">
+        </div>
+
+        <div class="form-group espaciado">
+          <input [ngClass]="{'is-invalid errorFondo':password.invalid && (password.dirty || password.touched)}" formControlName="password" type="password" placeholder="Contraseña" class="form-control rounded-pill">
+
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error">
+            <span *ngIf="password.errors.required">El campo es obligatorio</span>
+            <span *ngIf="password.errors.minlength">El tamaño minimo del campo es de 8 caracteres</span>
           </div>
+        </div>
 
-          <div class="form-group espaciado">
-          <input  type="text" placeholder="Nombre Usuario" class="form-control rounded-pill" >
-          </div>
-          <div class="form-group espaciado">
-          <input type="email" placeholder="Email" class="form-control rounded-pill" >
-          </div>
-          <div class="form-group espaciado">
-            <input type="telefono" placeholder="Telefono movil" class="form-control rounded-pill" >
-            </div>
-          <div class="form-group espaciado">
-          <input  type="password" placeholder="Contraseña" class="form-control rounded-pill" >
-          </div>
+        <div class="form-group espaciado">
+          <input formControlName="confirmacionPassword" type="confirmacionPassword" placeholder="Confirmacion Contraseña" class="form-control rounded-pill">
+        </div>
 
-          <div class="form-group espaciado">
-            <input  type="confirmacionPassword" placeholder="Confirmacion Contraseña" class="form-control rounded-pill" >
-          </div>  
+        <div class="form-group col-8 mx-auto botonIn">
+          <button class="btn rounded-pill" style="background-color:#0077b6;color: white;padding: 8px 38px;"
+          [disabled]="!formRegistro.valid" (click)="guardar()">Crear Cuenta</button>
+        </div>
 
-          <div class="form-group col-8 mx-auto botonIn">
-          <button class="btn rounded-pill" style="background-color:#0077b6;color: white;padding: 8px 38px;">Crear Cuenta</button>
-          </div>
-
-          <div class="col-6 mx-auto" style="padding-top:80px; color:#5e60ce;">
+        <div class="col-6 mx-auto" style="padding-top:80px; color:#5e60ce;">
           <!--div class="form-group">
               <span class="rounded-circle sombras" style="padding:20px 20px; "></span>
               <span class="rounded-circle sombras" style="padding:20px 20px; "></span>
               <span class="rounded-circle sombras" style="padding:20px 20px; "></span>
           </div-->
-          </div>
-              
-        </form>
-      </div>
-    </div>
+        </div>
 
-  </div>  
+      </form>
+    </div>
+  </div>
+
+</div>

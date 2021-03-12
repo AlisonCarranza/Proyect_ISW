@@ -1,6 +1,5 @@
-var express=require('express');
+var express = require('express');
 var jwt=require('jsonwebtoken');
-
 var router = express.Router();
 var usuario = require('../models/usuario');
 
@@ -31,3 +30,6 @@ router.post('/login',function (req, res) {
     });
 
 });
+
+//exportacion del metodo router para que pueda ser accededido por cualquier usuario
+module.exports = router;

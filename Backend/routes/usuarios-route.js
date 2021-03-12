@@ -1,17 +1,17 @@
-var express=require('express');
+var express = require('express');
 var router = express.Router();
 var jwt=require('jsonwebtoken');
 var usuario = require('../models/usuario');
 
 //Crear
-router.post('/',function (req, res) {
+router.post('/registro',function (req, res) {
     let a = new usuario(
        {
         nombre:req.body.nombre,
         userName:req.body.userName,
-        password:req.body.password,
         correo:req.body.correo,
-        imagenLogin:req.body.imagenLogin
+        telefono:req.body.telefono,
+        password:req.body.password
        }
     );
     
@@ -29,7 +29,7 @@ router.post('/',function (req, res) {
 });
 
 //Obtener un usuario
-router.get('/:id',function (req, res) {
+router.get('/usuarios/:id',function (req, res) {
     usuario.find({_id:req.params.id}).then(resultado=>{
         res.send(resultado[0]);
         res.end();
@@ -40,7 +40,7 @@ router.get('/:id',function (req, res) {
 });
 
 //obtener todos los usuarios
-router.get('/',function (req, res) {
+router.get('/usuarios',function (req, res) {
 
     usuario.find().then(resultado=>{
         res.send(resultado);
@@ -53,7 +53,7 @@ router.get('/',function (req, res) {
 });
 
 //actualizar
-router.put('/:id',function (req, res) {
+router.put('/usuarios/:id',function (req, res) {
     usuario.updateOne(
         {
           _id:req.params.id
@@ -61,9 +61,9 @@ router.put('/:id',function (req, res) {
         {
             nombre:req.body.nombre,
             userName:req.body.userName,
-            password:req.body.password,
             correo:req.body.correo,
-            imagenLogin:req.body.imagenLogin
+            telefono:req.body.telefono,
+            password:req.body.password
         }
     ).then(resultado=>{
         res.send(resultado);
@@ -77,7 +77,7 @@ router.put('/:id',function (req, res) {
 
 
 //eliminar
-router.delete('/:id',function (req, res) {
+router.delete('/usuarios/:id',function (req, res) {
     usuario.remove({_id:req.params.id})
     .then(resultado=>{
         res.send(resultado);
