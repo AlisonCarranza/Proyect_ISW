@@ -11,20 +11,52 @@
 
            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="error">
                 <span *ngIf="nombre.errors.required">El campo es obligatorio</span>
-                <span *ngIf="nombre.errors.maxlength">El tamaño maximo del campo es de 10 caracteres</span>
+                <span *ngIf="nombre.errors.maxlength">El tamaño maximo del campo es de 30 caracteres</span>
            </div>
         </div>
 
         <div class="form-group espaciado">
-          <input formControlName="userName" type="text" placeholder="Nombre Usuario" class="form-control rounded-pill">
+          <input [ngClass]="{'is-invalid errorFondo':userName.invalid && (userName.dirty || userName.touched)}" formControlName="userName" type="text" placeholder="Nombre Usuario" class="form-control rounded-pill">
+          <div *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="error">
+            <span *ngIf="userName.errors.required">El campo es obligatorio</span>
+            <span *ngIf="userName.errors.maxlength">El tamaño maximo del campo es de 30 caracteres</span>
+          </div>
         </div>
 
         <div class="form-group espaciado">
-          <input formControlName="correo" type="email" placeholder="Email" class="form-control rounded-pill">
+          <input [ngClass]="{'is-invalid errorFondo':correo.invalid && (correo.dirty || correo.touched)}" formControlName="correo" type="email" placeholder="Email" class="form-control rounded-pill">
+          <div *ngIf="correo.invalid && (correo.dirty || correo.touched)" class="error">
+            <span *ngIf="correo.errors.required">El campo es obligatorio</span>
+          </div>
         </div>
 
         <div class="form-group espaciado">
-          <input formControlName="telefono" type="telefono" placeholder="Telefono movil" class="form-control rounded-pill">
+          <input [ngClass]="{'is-invalid errorFondo':telefono.invalid && (telefono.dirty || telefono.touched)}" formControlName="telefono" type="telefono" placeholder="Telefono movil" class="form-control rounded-pill">
+          <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="error">
+            <span *ngIf="telefono.errors.required">El campo es obligatorio</span>
+          </div>
+        </div>
+
+        <div class="form-inline espaciado">
+          <div class="form-check mx-3">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Femenino
+            </label>
+          </div>
+          <div class="form-check mx-3">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+            <label class="form-check-label" for="flexRadioDefault2">
+              Masculino
+            </label>
+          </div>
+          <div class="form-check mx-3">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+            <label class="form-check-label" for="flexRadioDefault2">
+              Omitir
+            </label>
+          </div>
+          
         </div>
 
         <div class="form-group espaciado">
@@ -37,22 +69,18 @@
         </div>
 
         <div class="form-group espaciado">
-          <input formControlName="confirmacionPassword" type="confirmacionPassword" placeholder="Confirmacion Contraseña" class="form-control rounded-pill">
+          <input [ngClass]="{'is-invalid errorFondo':confirmacionPassword.invalid && (confirmacionPassword.dirty || confirmacionPassword.touched)}" formControlName="confirmacionPassword" 
+          type="password" placeholder="Confirmacion Contraseña" class="form-control rounded-pill">
+          <div *ngIf="confirmacionPassword.invalid && (confirmacionPassword.dirty || confirmacionPassword.touched)" class="error">
+            <span *ngIf="confirmacionPassword.errors.required">El campo es obligatorio</span>
+            <span *ngIf="password.errors.minlength">El tamaño minimo del campo es de 8 caracteres</span>
+          </div>
         </div>
 
         <div class="form-group col-8 mx-auto botonIn">
           <button class="btn rounded-pill" style="background-color:#0077b6;color: white;padding: 8px 38px;"
           [disabled]="!formRegistro.valid" (click)="guardar()">Crear Cuenta</button>
         </div>
-
-        <div class="col-6 mx-auto" style="padding-top:80px; color:#5e60ce;">
-          <!--div class="form-group">
-              <span class="rounded-circle sombras" style="padding:20px 20px; "></span>
-              <span class="rounded-circle sombras" style="padding:20px 20px; "></span>
-              <span class="rounded-circle sombras" style="padding:20px 20px; "></span>
-          </div-->
-        </div>
-
       </form>
     </div>
   </div>

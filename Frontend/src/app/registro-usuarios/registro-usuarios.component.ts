@@ -30,9 +30,25 @@ export class RegistroUsuariosComponent implements OnInit {
   get nombre(){
     return this.formRegistro.get('nombre');
   }
+  
+  get userName(){
+    return this.formRegistro.get('userName');
+  }
+
+  get correo(){
+    return this.formRegistro.get('correo');
+  }
+
+  get telefono(){
+    return this.formRegistro.get('telefono');
+  }
 
   get password(){
     return this.formRegistro.get('password');
+  }
+
+  get confirmacionPassword(){
+    return this.formRegistro.get('confirmacionPassword');
   }
 
 

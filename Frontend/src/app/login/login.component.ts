@@ -19,7 +19,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  get password(){
+    return this.formLogin.get('password');
+  }
 
+  get correo(){
+    return this.formLogin.get('correo');
+  }
   
   ingresar(){
     console.log(this.formLogin.value.correo);
