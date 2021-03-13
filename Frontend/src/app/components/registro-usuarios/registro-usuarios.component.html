@@ -1,0 +1,44 @@
+<div class="container-fluid">
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-xl-4 sombras mx-auto" style="background-color: white;">
+        
+        <form id="form-login">
+            <h5 class="col-5 titulo">Registro</h5>
+          <div class="form-group espaciado">
+            <input type="text" placeholder="Nombre Completo" class="form-control rounded-pill">
+
+          </div>
+
+          <div class="form-group espaciado">
+          <input  type="text" [(ngModel)]="user.username" name= "username" placeholder="Nombre Usuario" class="form-control rounded-pill" >
+          </div>
+          <div class="form-group espaciado">
+          <input type="email" placeholder="Email" class="form-control rounded-pill" >
+          </div>
+          <div class="form-group espaciado">
+            <input type="telefono" placeholder="Telefono movil" class="form-control rounded-pill" >
+            </div>
+          <div class="form-group espaciado">
+            <input mdbInput mdbValidate (change)="verify()" type="password" mdbActive id="defaultLoginFormPassword" name="password" [type]="hide2 ? 'password' : 'text'" formControlName="password" class="form-control rounded-pill" placeholder="Contraseña" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
+            <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2"> <mdb-icon fas icon="eye-slash" *ngIf="hide2==true else eyeOpen" (click)="hide2 = !hide2"></mdb-icon></span>
+                 <ng-template #eyeOpen >
+                    <mdb-icon fas icon="eye" (click)="hide2 = !hide2"></mdb-icon>
+                  </ng-template>
+            </div>
+          </div>
+
+          <div class="form-group espaciado">
+            <input  type="password" placeholder="Confirmacion Contraseña" class="form-control rounded-pill" >
+          </div>  
+
+          <div class="form-group col-8 mx-auto botonIn">
+          <button class="btn rounded-pill" style="background-color:#0077b6;color: white;padding: 8px 38px;">Crear Cuenta</button>
+          </div>
+              
+        </form>
+      </div>
+    </div>
+
+  </div> 

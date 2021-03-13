@@ -1,8 +1,8 @@
 const {Router}=require('express');
 const router = Router();
 const nodemailer = require('nodemailer');
-const user = require('../modules/usersModel');
-//const bcrypt = require ('bcrypt-nodejs');
+const user = require('../models/usersModel');
+const bcrypt = require ('bcrypt-nodejs');
 
 router.post('/api/rec-password', async (req, res)=>{
     try {
@@ -16,11 +16,10 @@ router.post('/api/rec-password', async (req, res)=>{
           if(UserR = await user.findOne({email:email_l})) {     
             var crypto= require('crypto');
             var tempPassword= crypto.randomBytes(10).toString('hex');
-            /*Encriptacion y desencripcion de contraseñas
+            /*Encriptacion y desencripcion de contraseñas*/
             const salt = bcrypt.genSaltSync();
             const hash= bcrypt.hashSync(tempPassword, salt);
             await user.updateOne({email:email_l},{$set:{temporal_pass:hash}});
-            await driver.updateOne({email:email_l},{$set:{temporal_pass:hash}});*/
             
             /*INICIO ENVIO DE CORREO */
             const transporter = nodemailer.createTransport({

@@ -2,18 +2,15 @@ const {Schema, model} = require('mongoose');
 const bcrypt = require ('bcrypt-nodejs');
 
 const userSchema = new Schema({
-    nombres: String,
-    apellidos: String,
-    
+    nombre: String,
+    username: String,
     email: String,
     password: String,
-    direccion: String,
-    fechaNacimiento: Date,
-    picPerfil: String,
     telefono: String,
-    sexo: String,
+    genero: String,
     //intentos:Number,
-    //token: String,
+    picPerfil: String,
+    token: String,
     temporal_pass:String,
     mesRegistro:Number,
     anioRegistro:Number

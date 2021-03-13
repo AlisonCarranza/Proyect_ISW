@@ -15,7 +15,8 @@ app.use(express.json());
 app.use(cors());
 
 //permite el acceso a los parametros enviados mediante post , es decir al cuerpo de la peticion.
-app.use(require ('./routes/rec-password'));
+app.use (require ('./routes/rec-password'));
+app.use (require ('./routes/user'));
 
 
 
