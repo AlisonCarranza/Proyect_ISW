@@ -6,6 +6,7 @@ import { AuthGuard } from "./guards/auth.guard";
 import { RecPasswordComponent } from "./components/rec-password/rec-password.component";
 import { LandingPageComponent } from "./components/landing-page/landing-page.component";
 import { RegistroUsuariosComponent } from "./components/registro-usuarios/registro-usuarios.component";
+import { LoginComponent } from "./components/login/login.component";
 
 
 const routes: Routes = [
@@ -19,6 +20,12 @@ const routes: Routes = [
   {
     path: 'signup',
     component: RegistroUsuariosComponent
+
+  },
+
+  {
+    path: 'signin',
+    component: LoginComponent
 
   },
 

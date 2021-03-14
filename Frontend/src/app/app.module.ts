@@ -20,6 +20,7 @@ import { AppComponent } from './app.component';
 import { RecPasswordComponent } from "./components/rec-password/rec-password.component";
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { RegistroUsuariosComponent } from './components/registro-usuarios/registro-usuarios.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { RegistroUsuariosComponent } from './components/registro-usuarios/regist
     AppComponent,
     RecPasswordComponent,
     LandingPageComponent,
-    RegistroUsuariosComponent
+    RegistroUsuariosComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

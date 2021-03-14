@@ -18,8 +18,30 @@ export class AuthService {
     private sanitizer: DomSanitizer
     ) {}
 
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/signin']);
+  }  
+  
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
+  signUp(user){
+    return this.http.post<any>(this.URL + '/signup', user);  
+  }
+
+  signIn(user){
+    return this.http.post<any>(this.URL + '/signin', user);
+  
+  }  
+
   recPass(user){
-   return this.http.post<any>(this.URL + '/rec-password', user);
-}
+    return this.http.post<any>(this.URL + '/rec-password', user);
+  }
 
 }
