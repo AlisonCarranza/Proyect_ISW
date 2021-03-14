@@ -44,4 +44,8 @@ export class AuthService {
     return this.http.post<any>(this.URL + '/rec-password', user);
   }
 
+  changeRecPass(user){
+    return this.http.post<any>(this.URL + '/recover-password', user);
+  }
+
 }

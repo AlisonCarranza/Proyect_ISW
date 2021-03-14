@@ -21,6 +21,7 @@ import { RecPasswordComponent } from "./components/rec-password/rec-password.com
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { RegistroUsuariosComponent } from './components/registro-usuarios/registro-usuarios.component';
 import { LoginComponent } from './components/login/login.component';
+import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { LoginComponent } from './components/login/login.component';
     RecPasswordComponent,
     LandingPageComponent,
     RegistroUsuariosComponent,
-    LoginComponent
+    LoginComponent,
+    RecoverPasswordComponent
   ],
   imports: [
     BrowserModule,

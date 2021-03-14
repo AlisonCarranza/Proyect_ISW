@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
         }else if(res.estado=='temporal'&&res.type=='usuario'){
           localStorage.setItem('token', res.token);
           Swal.fire("Bienvenido", "Ahora puede cambiar su contraseña", "success");
-          //this.router.navigate(['/recover-pass']);
+          this.router.navigate(['/recover-password']);
         }else if(res.estado=='hecho'&& res.type=='usuario'){
           localStorage.setItem('token', res.token);
           Swal.fire("Bienvenido","", "success");

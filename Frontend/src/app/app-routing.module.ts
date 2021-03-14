@@ -7,6 +7,7 @@ import { RecPasswordComponent } from "./components/rec-password/rec-password.com
 import { LandingPageComponent } from "./components/landing-page/landing-page.component";
 import { RegistroUsuariosComponent } from "./components/registro-usuarios/registro-usuarios.component";
 import { LoginComponent } from "./components/login/login.component";
+import { RecoverPasswordComponent } from "./components/recover-password/recover-password.component";
 
 
 const routes: Routes = [
@@ -32,6 +33,12 @@ const routes: Routes = [
   {
     path: 'rec-password',
     component: RecPasswordComponent
+
+  },
+
+  {
+    path: 'recover-password',
+    component: RecoverPasswordComponent
 
   }
 

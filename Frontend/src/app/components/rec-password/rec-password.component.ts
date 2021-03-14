@@ -31,7 +31,7 @@ export class RecPasswordComponent implements OnInit {
          Swal.fire("Error", "No se encontró su correo", "warning");
        }else if(res.estado=='hecho'){
          Swal.fire("Completado", "Se envió una contraseña de acceso temporal a su correo", "success");
-         //this.router.navigate(['/signin']); 
+         this.router.navigate(['/signin']); 
        }else if(res.estado=='noEnviado'){
          Swal.fire("Error", "No se pudo enviar el correo, favor intente de nuevo", "warning");
        }          
@@ -39,7 +39,7 @@ export class RecPasswordComponent implements OnInit {
      err =>{
        if (err instanceof HttpErrorResponse) {
          if (err.status === 401) {
-           //this.router.navigate(['/signin']);
+          this.router.navigate(['/signin']);
          }
        }
        Swal.fire("Error", "Hubo un error en el sistema, favor intente de nuevo", "warning");
