@@ -28,6 +28,11 @@ body, html {
   
 }
 
+.profesional:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 40px -10px;
+}
+
 
 
 
