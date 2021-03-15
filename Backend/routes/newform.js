@@ -6,6 +6,7 @@ const Project = require('../models/projectModel');
 router.post('/api/nuevo-proyecto', async (req, res)=>{
 
     let token = req.headers.authorization.split(' ')[1];
+    console.log (token);
     try {
       if (User = await user.findOne({token})){
         const project = new Project({

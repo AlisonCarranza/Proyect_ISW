@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { AuthService } from 'src/app/services/auth.service';
+import * as alertify from 'alertifyjs';
+import Swal from "sweetalert2/dist/sweetalert2.js";
 //import { ConfigService } from 'src/app/services/config.service';
 //import { Model } from './projectModel';
 //import {Validation} from './validations';
@@ -74,6 +76,7 @@ export class NewProjectFormComponent implements OnInit {
   emptyTitulo=false;
   emptyDescripcion=false;
   camposIncompletos=false;
+  wrongPresupuesto=false;
 
   current= new Date();
   //month= this.current.getMonth();
@@ -81,6 +84,40 @@ export class NewProjectFormComponent implements OnInit {
 
 
   submitNewProjectForm(){
+    if(this.proyecto.titulo==""){
+      alertify.error('No puede dejar el titulo en blanco');
+    }else if(this.proyecto.descripcion==""){
+      alertify.error('No puede dejar la descripcion en blanco');
+    }else if(this.proyecto.visibilidad==""){
+      alertify.error('No puede dejar la visibilidad en blanco');
+    }else if(this.proyecto.presupuesto==0){
+      alertify.error('El presupuesto no puede ser cero');
+    }else if(this.proyecto.timeframe==""){
+      alertify.error('No puede dejar el campo en blanco');
+      return false;
+    }else{
+      this.authService.NewProjectForm(this.proyecto)
+      .subscribe(
+        res =>{
+          if(res.estado=='ProjectSuccess'){
+            localStorage.setItem('token', res.token);
+            Swal.fire("Exitoso", "Proyecto guardado con éxito", "success");
+            this.router.navigate(['/profile']);
+          }else{
+            Swal.fire("Error", "Hubo un error en los datos ingresados, verifique cada uno de ellos!", "warning");
+          }
+          
+        },
+        err =>{
+          console.log(err);
+          Swal.fire("Error", "Hubo un error en el sistema, favor intente de nuevo!", "error");
+          this.router.navigate(['/signup']);
+        }
+      )
+    }
+  }
+
+    /*
     this.validationPresupuesto();
     if (this.proyecto.titulo==="" || this.proyecto.descripcion===""|| this.proyecto.presupuesto===0 ){
       this.camposIncompletos=true;
@@ -115,9 +152,12 @@ export class NewProjectFormComponent implements OnInit {
     if (this.proyecto.timeframe===""){
       this.emptyDescripcion=true;
     }
+    if (this.proyecto.presupuesto<1000 || this.proyecto.presupuesto>300000 ){
+      this.wrongPresupuesto=true;
+    }
   };
   validationTitulo(){
 
-  };
+  };*/
 
 }

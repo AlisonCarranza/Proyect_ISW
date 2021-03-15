@@ -46,6 +46,16 @@
             <a class="nav-link"  routerLink="/profile" routerLinkActive="active">Perfil</a>
           </li>
         </div>
+        <div *ngIf="authService.loggedIn()">
+          <li class="nav-item" >
+            <a class="nav-link"  routerLink="/projects" routerLinkActive="active">Mis Proyectos</a>
+          </li>
+        </div>
+        <div *ngIf="authService.loggedIn()">
+          <li class="nav-item" >
+            <a class="nav-link"  routerLink="/search-prof" routerLinkActive="active">Buscar Profesionales</a>
+          </li>
+        </div>
         <div>
           <li class="nav-item" *ngIf="authService.loggedIn();">
             <a class="nav-link" (click)="authService.logout()" routerLink="/signin">Salir</a>

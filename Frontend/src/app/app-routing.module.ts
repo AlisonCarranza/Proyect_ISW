@@ -11,6 +11,8 @@ import { RecoverPasswordComponent } from "./components/recover-password/recover-
 import { NewProjectFormComponent } from "./components/new-project-form/new-project-form.component";
 import { ProfileComponent } from "./components/profile/profile.component"
 import { FuncionComponent } from "./components/funcion/funcion.component";
+import { ProjectsComponent} from "./components/projects/projects.component";
+import { SearchProfComponent } from "./components/search-prof/search-prof.component";
 
 const routes: Routes = [
   {
@@ -64,6 +66,18 @@ const routes: Routes = [
   {
     path: 'newProject',
     component: NewProjectFormComponent
+
+  },
+
+  {
+    path: 'projects',
+    component: ProjectsComponent
+
+  },
+
+  {
+    path: 'search-prof',
+    component: SearchProfComponent
 
   }
 
