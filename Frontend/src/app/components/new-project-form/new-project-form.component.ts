@@ -17,12 +17,12 @@ export class NewProjectFormComponent implements OnInit {
   proyecto={
     titulo: '',
     descripcion: '',
-    visibilidad: '',
-    presupuesto: 0,
+    visibilidad: 'no',
+    presupuesto: 1000,
     timeframe: '',
     roles: '',
-    herramientas: '',
-    fecha_creacion: ''
+    herramientas: 'indefinido',
+    fecha_creacion: 'indefinido'
   }
 
   constructor(
@@ -74,6 +74,8 @@ export class NewProjectFormComponent implements OnInit {
   emptyTitulo=false;
   emptyDescripcion=false;
   camposIncompletos=false;
+  wrongPresupuesto=false;
+  emptyPresupesto=false;
 
   current= new Date();
   //month= this.current.getMonth();
@@ -81,8 +83,9 @@ export class NewProjectFormComponent implements OnInit {
 
 
   submitNewProjectForm(){
-    this.validationPresupuesto();
-    if (this.proyecto.titulo==="" || this.proyecto.descripcion===""|| this.proyecto.presupuesto===0 ){
+    this.cleanValidations();
+    this.validation();
+    if (this.emptyTitulo! || this.emptyDescripcion!|| this.wrongPresupuesto!   ){
       this.camposIncompletos=true;
     }
     else {
@@ -105,19 +108,28 @@ export class NewProjectFormComponent implements OnInit {
 
   };
 
-  validationPresupuesto(){
+  validation(){
     if (this.proyecto.titulo===""){
       this.emptyTitulo=true;
     }
     if (this.proyecto.descripcion===""){
       this.emptyDescripcion=true;
     }
-    if (this.proyecto.timeframe===""){
-      this.emptyDescripcion=true;
+    if (this.proyecto.presupuesto<1000 || this.proyecto.presupuesto>300000 ){
+      this.wrongPresupuesto=true;
     }
-  };
-  validationTitulo(){
 
   };
+
+  cleanValidations(){
+    this.emptyTitulo=false;
+    this.emptyDescripcion=false;
+    this.camposIncompletos=false;
+    this.wrongPresupuesto=false;
+    this.emptyPresupesto=false;
+  }
+
+
+
 
 }

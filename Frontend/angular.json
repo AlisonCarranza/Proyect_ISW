@@ -20,7 +20,7 @@
             "allowedCommonJsDependencies": [
               "lodash",
               "alertifyjs"
-           ],
+            ],
             "outputPath": "dist/frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -40,7 +40,6 @@
               "./node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
               "./node_modules/animate.css/animate.css",
               "src/styles.scss"
-
             ],
             "scripts": [
               "./node_modules/chart.js/dist/Chart.js",
@@ -138,6 +137,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "frontend"
+    }
+  },
+  "defaultProject": "frontend",
+  "cli": {
+    "analytics": "1bf37886-b632-4eb3-85cb-321a814e9a67"
+  }
 }

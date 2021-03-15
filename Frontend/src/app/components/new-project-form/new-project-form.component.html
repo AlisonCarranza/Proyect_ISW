@@ -1,8 +1,8 @@
 
 <div class="row">
-<div class="col-1 ">
+<div class="col-2 ">
 </div>
-<div class="col-lg-10  col-sm-12 form-group" id="form-login">
+<div class="col-lg-8  col-sm-12 form-group" id="form-login">
 
   <form (submit)=submitNewProjectForm() class="" action="index.html" method="post" #projectForm="ngForm">
     <h5 class="col-20 titulo">Nuevo Proyecto</h5>
@@ -13,17 +13,32 @@
       [(ngModel)]="proyecto.titulo" name="titulo"
       #titulo="ngModel"
     >
-    <div *ngIf="emptyTitulo" class="alert alert-danger box-msg" role="alert">
+    <div *ngIf="emptyTitulo" class="alert alert-warning box-msg" role="alert">
+      <strong>Debe de nombrar su proyecto.</strong>
+    </div>
+
+    <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)"
+    class="alert alert-danger">
       <strong>Campo requerido!</strong>
     </div>
+
+
     <label for="descripcion-proyecto">De una descripcion detallada del proyecto</label>
 
     <textarea class="form-control" rows="3" cols="" id="descripcion" maxlength="1000" minlength="1"
+    required minlength="1"
     [(ngModel)]="proyecto.descripcion" name="descripcion"
+    #descripcion="ngModel"
     ></textarea>
-    <div *ngIf="emptyDescripcion" class="alert alert-danger box-msg" role="alert">
+    <div *ngIf="emptyDescripcion " class="alert alert-warning box-msg" role="alert">
+      <strong>Su proyecto debe de llevar una descripcion.</strong>
+    </div>
+    <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)"
+    class="alert alert-danger">
       <strong>Campo requerido!</strong>
     </div>
+
+
     <label  for="">Desea que el proyecto sea visto al publico? </label>
     <select class="form-select form-control" name="select"
       [(ngModel)]="proyecto.visibilidad" name="visibilidad"
@@ -31,18 +46,25 @@
       <option value="si">Si</option>
       <option value="no" selected>No</option>
     </select>
-    <input hidden style="margin-left:15px;" class="form-check-input" type="checkbox" value="" id="defaultCheck"
-
-    >
     <hr>
     <h5><label class="step-form" class="titulo">Paso 2: Alcance </label></h5>
-    <label for="">Presupuesto</label>
+    <label for="">Presupuesto. Es presupuesto no debe ser menor de Lps.1000 o mayor de Lps.300000 </label>
     <div class="d-flex align-items-start">
         <label for="">Lps.</label><input class="form-control"  type="number"   value="" id="presupuesto" min=1000 max=300000
+        required [min]="1000"
+        required [max]="300000"
         [(ngModel)]="proyecto.presupuesto" name="presupuesto"
+        #presupuesto="ngModel"
         >
     </div>
-    <label for="">Tiempo</label>
+    <div *ngIf="wrongPresupuesto" class="alert alert-warning box-msg" role="alert">
+      <strong>El presupuesto debe ser entre lps.1000 y 300,000!</strong>
+    </div>
+    <div *ngIf="presupuesto.invalid && (presupuesto.dirty || presupuesto.touched)"
+    class="alert alert-danger">
+      <strong>Debe de estimar un presupuesto. Este puede ser negociable y ser modificado.</strong>
+    </div>
+    <label for="">Seleccione el marco de tiempo que mas se asemeja a su necesidad. De no estar seguro lo puede dejar vacio o seleccionar indefinido</label>
     <select class="form-select form-control" id="timeframes" required id="timeframe"
       [(ngModel)]="proyecto.timeframe" name="timeframe"
     >
@@ -52,15 +74,14 @@
     <br>
     <hr>
     <h5><label class="step-form" class="titulo">Paso 3: Perfil del talento</label></h5>
-    <label for="">Rol</label>
+    <label for="">Seleccione el rol de su freelance. Puede dejarlo vacio o seleccionar indefinido.</label>
     <select class="form-select form-control" id="herramientas" required id="herramientaID"
       [(ngModel)]="proyecto.roles" name="roles"
     >
       <option *ngFor="let rol of roles" [value]="rol">{{rol}}</option>
     </select>
 
-    <label for="">Herramientas</label>
-
+    <label for="">Escoja sus herramientas. Puede dejarlo vacio o seleccionar indefinido.</label>
     <div >
       <select class="form-select form-control selectpicker" id="herramientas" required id="herramientaID"
         [(ngModel)]="proyecto.herramientas" name="herramientas"
@@ -71,7 +92,7 @@
 
 
     <div *ngIf="camposIncompletos" class="alert alert-danger box-msg alert-dismissible fade show" role="alert" id=fixedalert>
-      <strong>Algunos campos faltan por completar!</strong>
+      <strong>Algunos campos presentan errores!</strong>
     </div>
     <div class="text-center">
       <button class="btn btn-block btn-primary rounded-pill " type="submit" name="button">Guardar</button>
@@ -81,6 +102,6 @@
   </form>
 
 </div>
-<div class="col-1">
+<div class="col-2">
 </div>
 </div>
