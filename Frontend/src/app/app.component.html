@@ -16,14 +16,14 @@
     <!-- Collapsible content -->
     <links>
     <ul class= "navbar-nav ml-auto">
-      <div>
+      <div *ngIf="!authService.loggedIn()">
         <li class="nav-item">
           <a class="nav-link" routerLink="/home" routerLinkActive="active">Inicio</a>
         </li>
       </div>
       <div *ngIf="!authService.loggedIn()">
       <li class="nav-item ">
-          <a class="nav-link"  routerLinkActive="active">Como Funciona</a>
+          <a class="nav-link"  routerLink="/function" routerLinkActive="active">Como Funciona</a>
         </li>
       </div>
         <div *ngIf="!authService.loggedIn()">

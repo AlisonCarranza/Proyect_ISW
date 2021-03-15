@@ -24,6 +24,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 import { NewProjectFormComponent } from './components/new-project-form/new-project-form.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FuncionComponent } from './components/funcion/funcion.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     LoginComponent,
     RecoverPasswordComponent,
     NewProjectFormComponent,
-    ProfileComponent
+    ProfileComponent,
+    FuncionComponent
   ],
   imports: [
     BrowserModule,
