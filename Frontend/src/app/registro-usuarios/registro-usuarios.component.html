@@ -73,7 +73,7 @@
           type="password" placeholder="Confirmacion Contraseña" class="form-control rounded-pill">
           <div *ngIf="confirmacionPassword.invalid && (confirmacionPassword.dirty || confirmacionPassword.touched)" class="error">
             <span *ngIf="confirmacionPassword.errors.required">El campo es obligatorio</span>
-            <span *ngIf="password.errors.minlength">El tamaño minimo del campo es de 8 caracteres</span>
+            <span *ngIf="confirmacionPassword.errors.minlength">El tamaño minimo del campo es de 8 caracteres</span>
           </div>
         </div>
 

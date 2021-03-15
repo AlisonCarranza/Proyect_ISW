@@ -11,11 +11,11 @@ export class UsuariosService{
 
   constructor(private httpClient:HttpClient, private router:Router) { }
   
-  guardarUsuario(usuario):Observable<any>{
+  guardarUsuario(usuario: any):Observable<any>{
     return this.httpClient.post('http://localhost:4000/registro',usuario);
   }
 
-  guardarLogin(usuarioLog):Observable<any>{
+  guardarLogin(usuarioLog: any):Observable<any>{
     return this.httpClient.post('http://localhost:4000/login',usuarioLog);
   }
   
