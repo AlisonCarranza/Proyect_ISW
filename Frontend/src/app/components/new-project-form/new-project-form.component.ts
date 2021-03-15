@@ -14,8 +14,16 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./new-project-form.component.scss']
 })
 export class NewProjectFormComponent implements OnInit {
-
-  //model=new Model('arthurfleck@unah.hn','','','',20000,'','','','');
+  proyecto={
+    titulo: '',
+    descripcion: '',
+    visibilidad: '',
+    presupuesto: 0,
+    timeframe: '',
+    roles: '',
+    herramientas: '',
+    fecha_creacion: ''
+  }
 
   constructor(
     private authService: AuthService,
@@ -73,10 +81,40 @@ export class NewProjectFormComponent implements OnInit {
 
 
   submitNewProjectForm(){
+    this.validationPresupuesto();
+    if (this.proyecto.titulo==="" || this.proyecto.descripcion===""|| this.proyecto.presupuesto===0 ){
+      this.camposIncompletos=true;
+    }
+    else {
+      this.proyecto.fecha_creacion=this.current as unknown as string;
+      this.authService.NewProjectForm(this.proyecto)
+      .subscribe(
+       res =>{
+         console.log(res.estado);
+         alert("Projecto publicado exitosamente");
+       },
+       err =>{
+         if (err instanceof HttpErrorResponse) {
+           if (err.status === 401) {
+           }
+         }
+       }
+     )
+    }
+
+
   };
 
   validationPresupuesto(){
-
+    if (this.proyecto.titulo===""){
+      this.emptyTitulo=true;
+    }
+    if (this.proyecto.descripcion===""){
+      this.emptyDescripcion=true;
+    }
+    if (this.proyecto.timeframe===""){
+      this.emptyDescripcion=true;
+    }
   };
   validationTitulo(){
 

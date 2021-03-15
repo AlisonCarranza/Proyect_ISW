@@ -21,7 +21,7 @@
           <a class="nav-link" routerLink="/home" routerLinkActive="active">Inicio</a>
         </li>
       </div>
-      <div>
+      <div *ngIf="!authService.loggedIn()">
       <li class="nav-item ">
           <a class="nav-link"  routerLinkActive="active">Como Funciona</a>
         </li>
@@ -34,6 +34,11 @@
         <div *ngIf="!authService.loggedIn()">
           <li class="nav-item" >
             <a class="nav-link"  routerLink="/signup" routerLinkActive="active">Registrarse</a>
+          </li>
+        </div>
+        <div *ngIf="authService.loggedIn()">
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/newProject" routerLinkActive="active">Crear Proyecto</a>
           </li>
         </div>
         <div *ngIf="authService.loggedIn()">
