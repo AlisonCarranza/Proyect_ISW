@@ -51,5 +51,43 @@ router.post('/api/signup', async (req, res)=>{
         }
             
     });
+
+
+    router.get('/api/profile',verifyToken, async (req, res) => {
     
-    module.exports = router;
+        try {
+            let token_l = req.headers.authorization.split(' ')[1];
+            if(User= await user.findOne({token:token_l}, {_id:0})){
+                console.log(User);
+                return res.json({User});
+            }        
+        } catch (error) {
+            console.log(error)
+            return res.status(401).json({estado:'Error'})    
+        }
+    });
+        
+        
+    async function verifyToken(req, res, next) {
+        try {
+            if (!req.headers.authorization) {
+                return res.status(401).send('Unauhtorized Request');
+            }
+            let token = req.headers.authorization.split(' ')[1];
+            if (token === 'null') {
+                return res.status(401).send('Unauhtorized Request');
+            }
+    
+            const payload = await jwt.verify(token, 'secretkey');
+            if (!payload) {
+                return res.status(401).send('Unauhtorized Request');
+            }
+            req.userId = payload._id;
+            next();
+        } catch(e) {
+            //console.log(e)
+            return res.status(401).send('Unauhtorized Request');
+        }
+    }
+    
+module.exports = router;

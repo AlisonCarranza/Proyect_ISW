@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
         }else if(res.estado=='hecho'&& res.type=='usuario'){
           localStorage.setItem('token', res.token);
           Swal.fire("Bienvenido","", "success");
-          //this.router.navigate(['/profile']);
+          this.router.navigate(['/profile']);
         }       
       },
       err =>{

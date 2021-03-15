@@ -40,6 +40,20 @@ export class AuthService {
   
   }  
 
+  getProfile() {
+    return this.http.get<any>(this.URL + '/profile');
+  }
+
+  getProfilePic(){
+    return this.http.get(this.URL+'/profile-pic', { responseType: 'blob' })
+      .pipe(
+        map(x => {
+          const urlToBlob = window.URL.createObjectURL(x) // get a URL for the blob
+          return this.sanitizer.bypassSecurityTrustResourceUrl(urlToBlob); // tell Anuglar to trust this value
+        }),
+      );
+  }
+
   recPass(user){
     return this.http.post<any>(this.URL + '/rec-password', user);
   }
@@ -47,5 +61,9 @@ export class AuthService {
   changeRecPass(user){
     return this.http.post<any>(this.URL + '/recover-password', user);
   }
+
+  NewProjectForm(titulo){
+    return this.http.post<any>(this.URL + '/nuevo-proyecto', titulo);
+   }
 
 }

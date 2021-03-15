@@ -22,6 +22,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { RegistroUsuariosComponent } from './components/registro-usuarios/registro-usuarios.component';
 import { LoginComponent } from './components/login/login.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
+import { NewProjectFormComponent } from './components/new-project-form/new-project-form.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { RecoverPasswordComponent } from './components/recover-password/recover-
     LandingPageComponent,
     RegistroUsuariosComponent,
     LoginComponent,
-    RecoverPasswordComponent
+    RecoverPasswordComponent,
+    NewProjectFormComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

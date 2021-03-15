@@ -26,14 +26,24 @@
           <a class="nav-link"  routerLinkActive="active">Como Funciona</a>
         </li>
       </div>
-        <div>
+        <div *ngIf="!authService.loggedIn()">
           <li class="nav-item" >
             <a class="nav-link"  routerLink="/signin" routerLinkActive="active">Iniciar Sesion</a>
           </li>
         </div>
-        <div>
+        <div *ngIf="!authService.loggedIn()">
           <li class="nav-item" >
             <a class="nav-link"  routerLink="/signup" routerLinkActive="active">Registrarse</a>
+          </li>
+        </div>
+        <div *ngIf="authService.loggedIn()">
+          <li class="nav-item" >
+            <a class="nav-link"  routerLink="/profile" routerLinkActive="active">Perfil</a>
+          </li>
+        </div>
+        <div>
+          <li class="nav-item" *ngIf="authService.loggedIn();">
+            <a class="nav-link" (click)="authService.logout()" routerLink="/signin">Salir</a>
           </li>
         </div>
     </ul>

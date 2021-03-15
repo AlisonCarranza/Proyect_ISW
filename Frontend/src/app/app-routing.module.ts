@@ -8,10 +8,16 @@ import { LandingPageComponent } from "./components/landing-page/landing-page.com
 import { RegistroUsuariosComponent } from "./components/registro-usuarios/registro-usuarios.component";
 import { LoginComponent } from "./components/login/login.component";
 import { RecoverPasswordComponent } from "./components/recover-password/recover-password.component";
-
+import { NewProjectFormComponent } from "./components/new-project-form/new-project-form.component";
+import { ProfileComponent } from "./components/profile/profile.component"
 
 const routes: Routes = [
-  
+  {
+    path: '',
+      redirectTo: 'home',
+      pathMatch: 'full'
+    },
+    
   {
     path: 'home',
     component: LandingPageComponent
@@ -31,6 +37,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'profile',
+    component: ProfileComponent
+
+  },
+
+  {
     path: 'rec-password',
     component: RecPasswordComponent
 
@@ -39,6 +51,12 @@ const routes: Routes = [
   {
     path: 'recover-password',
     component: RecoverPasswordComponent
+
+  },
+
+  {
+    path: 'newProject',
+    component: NewProjectFormComponent
 
   }
 
