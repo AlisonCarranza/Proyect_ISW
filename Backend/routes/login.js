@@ -4,12 +4,12 @@ const user = require('../models/usersModel');
 const jwt = require('jsonwebtoken');
 const bcrypt = require ('bcrypt-nodejs');
 
-
 router.post('/api/signin', async (req, res) => {
     try {
+        console.log("Prueba");
         const { email, password } = req.body;
         const email_l =email.toLowerCase(); 
-
+                
         //Verificacion si es usuario pasajero
         if(User = await user.findOne({email:email_l})){
             //if (!User) return res.json({estado:'email'});

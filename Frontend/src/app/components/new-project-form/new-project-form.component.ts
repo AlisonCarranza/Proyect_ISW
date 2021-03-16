@@ -100,7 +100,6 @@ export class NewProjectFormComponent implements OnInit {
       .subscribe(
         res =>{
           if(res.estado=='ProjectSuccess'){
-            localStorage.setItem('token', res.token);
             Swal.fire("Exitoso", "Proyecto guardado con éxito", "success");
             this.router.navigate(['/profile']);
           }else{
