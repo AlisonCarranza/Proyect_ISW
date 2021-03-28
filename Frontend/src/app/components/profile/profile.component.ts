@@ -3,6 +3,7 @@ import {  AuthService} from "../../services/auth.service";
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from "rxjs";
 import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+import {SidebarComponent} from 'src/app/components/sidebar/sidebar.component';
 //para redireccionar
 import { Router } from "@angular/router";
 import Sawl from "sweetalert2/dist/sweetalert2.js";
@@ -35,7 +36,7 @@ export class ProfileComponent implements OnInit {
       res => {
         this.profile=res.User;
         let currDate = new Date();
-       this.getImage().subscribe(x => this.imgURL = x)        
+       this.getImage().subscribe(x => this.imgURL = x)
       },
       err => {
         if (err instanceof HttpErrorResponse) {
