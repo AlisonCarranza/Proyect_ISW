@@ -10,6 +10,8 @@ import { LoginComponent } from "./components/login/login.component";
 import { RecoverPasswordComponent } from "./components/recover-password/recover-password.component";
 import { NewProjectFormComponent } from "./components/new-project-form/new-project-form.component";
 import { ProfileComponent } from "./components/profile/profile.component"
+import { EditarPerfilComponent } from "./components/editar-perfil/editar-perfil.component";
+
 
 const routes: Routes = [
   {
@@ -17,7 +19,7 @@ const routes: Routes = [
       redirectTo: 'home',
       pathMatch: 'full'
     },
-    
+
   {
     path: 'home',
     component: LandingPageComponent
@@ -58,6 +60,10 @@ const routes: Routes = [
     path: 'newProject',
     component: NewProjectFormComponent
 
+  },
+  {
+    path:'edit-profile',
+    component: EditarPerfilComponent
   }
 
 ];

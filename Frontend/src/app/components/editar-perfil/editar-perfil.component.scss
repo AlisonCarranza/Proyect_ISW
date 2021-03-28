@@ -1,0 +1,68 @@
+body {
+    overflow-x: hidden;
+  }
+
+
+ input {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+     border-radius: 20px;
+     border: 1px solid lightgray;
+     width: 250px;
+     height: 30px;
+     padding-left: 10px;
+     margin-bottom: 10px;
+ }
+
+ textarea {
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+    border-radius: 20px;
+    border: 1px solid lightgray;
+    width: 1000px;
+    height: 150px;
+    padding-left: 10px;
+ }
+ select {
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+    border-radius: 20px;
+    border: 1px solid lightgray;
+    width: 250px;
+
+    padding-left: 10px;
+
+ }
+
+
+ input:focus{
+    box-shadow: 0 2px 5px 0 rgba(15, 255, 254,1) 0 2px 10px 0 rgba(15, 255, 254,1)!important;
+    background-color: rgba(15, 255, 254,0.2)!important;
+}
+
+label {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-right: 20px;
+}
+
+h5{
+  padding-left: 30px;
+}
+
+img {
+  max-width: 350px;
+}
+
+#body-edit-profile{
+
+  background-color: white;
+}
+
+#cambioPass{
+  padding-left: 50px;
+}
+
+#cambioContact{
+  padding-left: 50px;
+}

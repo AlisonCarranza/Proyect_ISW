@@ -85,6 +85,7 @@ export class NewProjectFormComponent implements OnInit {
   submitNewProjectForm(){
     this.cleanValidations();
     this.validation();
+    console.log(this.proyecto);
     if (this.emptyTitulo! || this.emptyDescripcion!|| this.wrongPresupuesto!   ){
       this.camposIncompletos=true;
     }
@@ -95,6 +96,8 @@ export class NewProjectFormComponent implements OnInit {
        res =>{
          console.log(res.estado);
          alert("Projecto publicado exitosamente");
+         this.router.navigate(['profile']);
+
        },
        err =>{
          if (err instanceof HttpErrorResponse) {
