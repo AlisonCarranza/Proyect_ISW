@@ -10,7 +10,7 @@
     <h5 class="">Editar mi perfil</h5>
     <div class=" row d-flex d-flex justify-content-center ">
       <div class=" col-lg-3 col-sm-12 card d-flex " >
-        <img class="rounded-circle img-fluid" [src]="imgURLtest"/>
+        <img class="rounded-circle img-fluid" [src]="imgURL" alt="Imagen no cargo"/>
         <button type="button" class="btn btn-outline-secondary" id='subirImagenBtn' (click)="goSubirImagen()">Subir Imagen</button>
       </div>
       <div class="col-lg-1">
@@ -38,7 +38,7 @@
         [(ngModel)]="newPassword" name="npass"
         #npass="ngModel"
          >
-         {{newPassword}}
+
       </div>
       <div *ngIf="npass.invalid && (npass.dirty || npass.touched)"
       class="alert alert-danger genericAlert">
@@ -58,7 +58,7 @@
         [(ngModel)]="newPasswordCheck" name="npassCheck"
         #npassCheck="ngModel"
         >
-        {{newPasswordCheck}}
+
       </div>
       <div *ngIf="newPassword!=newPasswordCheck && (npassCheck.dirty || npassCheck.touched)"
       class="alert alert-danger genericAlert">
