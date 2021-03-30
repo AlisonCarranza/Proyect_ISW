@@ -1,5 +1,5 @@
 <div class="row">
-<div class="col-2">
+<div class="col-2 col-lg-2">
   <abe-sidebar></abe-sidebar>
 </div>
 <div class="col-lg-2 col-md-2">
@@ -9,7 +9,7 @@
   <form id="body-edit-profile" (submit)=actualizarPerfil()>
     <h5 class="">Editar mi perfil</h5>
     <div class=" row d-flex d-flex justify-content-center ">
-      <div class=" col-lg-3 card d-flex " >
+      <div class=" col-lg-3 col-sm-12 card d-flex " >
         <img class="rounded-circle img-fluid" [src]="imgURLtest"/>
         <button type="button" class="btn btn-outline-secondary" id='subirImagenBtn' (click)="goSubirImagen()">Subir Imagen</button>
       </div>
@@ -18,9 +18,9 @@
       </div>
 
       <div class=" col-lg-3 d-flex flex-column bd-highlight mb-3">
-        <label for="">{{profile.nombre}}  </label>
-        <label for="">{{profile.username}} </label>
-        <label for="">{{profile.email}}</label>
+        <label for="">Nombre: {{profile.nombre}}  </label>
+        <label for="">Nombre de usuario: {{profile.username}} </label>
+        <label for="">Correo: {{profile.email}}</label>
       </div>
     </div>
 
