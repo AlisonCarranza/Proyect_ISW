@@ -1,16 +1,26 @@
 <div class="row">
-<div class="col-2 ">
+<div class="col-2">
   <abe-sidebar></abe-sidebar>
 </div>
-<div class="col-2">
+<div class="col-lg-2 col-md-2">
 </div>
 <div class="col-lg-6  col-sm-12 form-group" id="form-login">
 
-  <form id="body-edit-profile">
-    <h5 class="col">Editar mi perfil</h5>
-    <div class="d-flex justify-content-center">
-      <div class="card">
-        <img class="rounded-circle img-fluid" [src]="imgURL"/>
+  <form id="body-edit-profile" (submit)=actualizarPerfil()>
+    <h5 class="">Editar mi perfil</h5>
+    <div class=" row d-flex d-flex justify-content-center ">
+      <div class=" col-lg-3 card d-flex " >
+        <img class="rounded-circle img-fluid" [src]="imgURLtest"/>
+        <button type="button" class="btn btn-outline-secondary" id='subirImagenBtn' (click)="goSubirImagen()">Subir Imagen</button>
+      </div>
+      <div class="col-lg-1">
+
+      </div>
+
+      <div class=" col-lg-3 d-flex flex-column bd-highlight mb-3">
+        <label for="">{{profile.nombre}}  </label>
+        <label for="">{{profile.username}} </label>
+        <label for="">{{profile.email}}</label>
       </div>
     </div>
 
@@ -18,15 +28,45 @@
     <div class="d-flex flex-column" id="cambioPass">
       <div class="p-2">
         <label for="">Contraseña actual</label>
-        <input type="text" name="" value="">
+        <input type="password" name="" value="">
       </div>
       <div class="p-2">
         <label for="">Nueva contraseña</label>
-        <input type="text" name="" value="">
+        <input  type="password" value=""
+        minlength="6"
+        required minlength="6"
+        [(ngModel)]="newPassword" name="npass"
+        #npass="ngModel"
+         >
+         {{newPassword}}
       </div>
+      <div *ngIf="npass.invalid && (npass.dirty || npass.touched)"
+      class="alert alert-danger genericAlert">
+        <div *ngIf="npass.errors.minlength">
+            <strong>La contraseña no puede ser menor de 6 caracteres.</strong>
+        </div>
+        <div *ngIf="npass.errors.required">
+          <strong>La contraseña no puede ser menor de 6 caracteres.</strong>
+        </div>
+
+      </div>
+
       <div class="p-2">
         <label for="">Repetir contraseña</label>
-        <input type="text" name="" value="">
+        <input type="password" value=""
+
+        [(ngModel)]="newPasswordCheck" name="npassCheck"
+        #npassCheck="ngModel"
+        >
+        {{newPasswordCheck}}
+      </div>
+      <div *ngIf="newPassword!=newPasswordCheck && (npassCheck.dirty || npassCheck.touched)"
+      class="alert alert-danger genericAlert">
+        <div *ngIf="newPassword!=newPasswordCheck">
+            <strong>Las contraseña no son iguales.</strong>
+        </div>
+
+
       </div>
 
 
@@ -35,19 +75,17 @@
     <div class="d-flex flex-column" id="cambioContact">
       <div class="p-2">
         <label for="">Telefono</label>
-        <input type="text" name="" value="">
+        <input value="{{profile.telefono}}" maxlength="11" type="text" name="" value=""
+        minlength="6"
+        required minlength="6"
+        [(ngModel)]="profile.telefono" name="telefono"
+        #telefono="ngModel"
+        >
       </div>
-
-
     </div>
-
-
-
-
-
-
-
-
+    <div *ngIf="passwordCheck" class="alert alert-danger box-msg alert-dismissible fade show" role="alert" id=fixedalert>
+      <strong>{{warningMessage}}</strong>
+    </div>
     <div class="text-center">
       <button class="btn btn-block btn-primary rounded-pill " type="submit" name="button">Guardar Cambios</button>
     </div>

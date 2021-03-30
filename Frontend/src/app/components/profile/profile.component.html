@@ -14,11 +14,8 @@
                 <h2>{{profile.nombre}}</h2>
                 <h5>Cliente</h5>
             </div>
-            <div class="col-11 col-lg-8 d-flex flex-row flex-wrap border-none" id="profile-info">
-                <!--<div class="col-12 col-sm-4 col-lg-3 d-flex flex-column">
-                  <b><label for="">Nombre:</label></b>
-                </div>-->
-                <div class="col-12 col-sm-4 col-lg-3 d-flex flex-column">
+            <div class="col-11 col-lg-6 d-flex flex-row flex-wrap border-none" id="profile-info">
+                  <div class="col-12 col-sm-4 col-lg-3 d-flex flex-column">
                     <br>
                     <br>
                   <b><label for="">Nombre de Usuario:</label></b>
@@ -42,7 +39,12 @@
                   <b><label for="">{{profile.telefono}}</label></b>
                 </div>
             </div>
+            <div class="col-lg-2">
+              <button type="button" class="btn btn-outline-secondary" id='editarPerfil' (click)="goEditarPerfil()">Editar perfil</button>
+            </div>
+
           </div>
+
         </div>
       </div>
     </div>

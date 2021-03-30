@@ -83,9 +83,11 @@ export class NewProjectFormComponent implements OnInit {
 
 
   submitNewProjectForm(){
+    //revisa si se cumplen las funciones
     this.cleanValidations();
     this.validation();
     console.log(this.proyecto);
+    //si se cumplen las validaciones se ejecuta el codigo
     if (this.emptyTitulo! || this.emptyDescripcion!|| this.wrongPresupuesto!   ){
       this.camposIncompletos=true;
     }

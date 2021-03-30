@@ -29,7 +29,23 @@ label {
   }
 
     .btn {
-      background-color: #0077b6;
+      background-color: white;
+      color:#092556;
+      border-color: #092556;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    #editarPerfil {
+      background-color: white;
+      color:#092556;
+      border-color: #092556;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    #editarPerfil:hover {
+      background-color: #092556;
+      color:white;
+      border-color: white;
       margin-top: 10px;
       margin-bottom: 10px;
     }
@@ -43,6 +59,3 @@ label {
   #profile-photo{
     margin-bottom: 30px;
   }
-.row{
-  height: 100%;
-}

@@ -16,6 +16,7 @@ import { DatePipe } from '@angular/common';
   providers: [DatePipe]
 })
 export class ProfileComponent implements OnInit {
+
   imgURL: any;
   profile={
     //picPerfil:'',
@@ -51,5 +52,8 @@ export class ProfileComponent implements OnInit {
   getImage(): Observable<SafeResourceUrl> {
     return  this.authService.getProfilePic();
   }
+  goEditarPerfil(){
+    this.router.navigate(['edit-profile']);
+  };
 
 }

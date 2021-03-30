@@ -66,3 +66,32 @@ img {
 #cambioContact{
   padding-left: 50px;
 }
+
+
+#subirImagenBtn {
+  background-color: white;
+  color:#092556;
+  border-color: #092556;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#subirImagenBtn:hover {
+  background-color: #092556;
+  color:white;
+  border-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#fixedalert{
+  text-align: center;
+  position: fixed;
+  top: 90px;
+  right: 260px;
+}
+.genericAlert{
+  background-color: white;
+  color: red;
+  border-color: white;
+
+}
