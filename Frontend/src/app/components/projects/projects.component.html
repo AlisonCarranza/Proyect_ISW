@@ -67,21 +67,21 @@
 
 <!--Parte para usar cards dinamicas-->
 <div>
-<div class="container-fluid" >
-  <div style="padding-bottom:5%;"><h1>Proyectos</h1></div>
-  <div align="center" class="row">
-    <div class="card-group mx-auto" >
-      <div class="card mx-3" *ngFor="let el of elements; let i = index">
-        <div class="card-body">
-          <h3 class="card-title">Tema: {{el.Titulo}}</h3>
-          <p class="card-text">
-            Descripción: {{el.Descripcion}}
-          </p>
-          <h5 *ngIf="i+1">Fecha: {{el.Fecha}}</h5>
-          <a  href="https://paratus.cf/projects?projects={{el.ID}}" class="btn btn-success text-right">Ver</a>
+  <div class="container-fluid" >
+    <div style="padding-bottom:5%;"><h1>Proyectos</h1></div>
+    <div align="center" class="row">
+      <div class="card-group mx-auto" *ngFor="let el of elements; let i = index">
+        <div class="card mx-3 my-3" >
+          <div class="card-body">
+            <h3 class="card-title">Tema: {{el.Titulo}}</h3>
+            <p class="card-text">
+              Descripción: {{el.Descripcion}}
+            </p>
+            <h5 *ngIf="i+1">Fecha: {{el.Fecha}}</h5>
+            <a  href="https://paratus.cf/projects?projects={{el.ID}}" class="btn btn-success text-right">Ver</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
+  </div>
