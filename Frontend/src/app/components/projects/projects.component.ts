@@ -31,30 +31,37 @@ constructor(
   private router: Router) { }
 
 ngOnInit() {
+  console.log("Carga el componente");
 if(!this.authService.loggedIn()){
   this.router.navigate(['/search-prof']);
-//}else { 
+}else { 
 
 /*Llamado a la funcion que trae la consulta del backend*/
-this.authService.searchProf()
+this.authService.viewProject()
 .subscribe(
   res=>{
+    this.projects=res;
+    console.log(this.projects);
+
     //Guardando el numero de elementos de la consulta hecha
-    //this.docs=res.Project;
-    //console.log(this.docs);
+    this.docs= this.projects.Project;
+    console.log(this.docs);
+
     //Guardando todos los elementos de la consulta hecha en projects
-    this.projects=res.proyecto;
+    this.projects= this.projects.proyecto;
+    console.log('muestra los proyectos',this.projects);
+
     //Llamado a la funcion que llena los elementos a mostrar 
     this.fillItems(this.docs);
     
   },
-  err=>{console.log(err)}
+  err=>{console.log('error al mostrar proyectos',err)}
 );
 }  
   
 }
 
-fillItems(limit){
+fillItems(limit: number){
 for (let i = 0; i < limit; i++) {
   /*Llenando el arreglo de elementos, para agregar mas datos solo deben incluir una nueva linea
     Con la forma: nombreIndice: this.projects[i].campoDeLaConsulta*/
@@ -64,6 +71,8 @@ for (let i = 0; i < limit; i++) {
     Descripcion: this.projects[i].descripcion,
     Fecha: this.projects[i].fecha
   });
+
+  console.log(this.elements[0]);
 }
 }
 

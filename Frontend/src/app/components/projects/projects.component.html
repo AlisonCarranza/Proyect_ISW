@@ -1,5 +1,5 @@
 <!--Parte visual-->
-<div>
+<!--div>
   <h1>Proyectos</h1>
   <div align="center" class="row">
     <div class="card-group" *ngFor="let el of elements; let i = index">
@@ -63,14 +63,15 @@
       </div>
     </div>
   </div>       
-</div>
+</div-->
 
-<!--Parte para usar cards dinamicas>
+<!--Parte para usar cards dinamicas-->
 <div>
-  <h1>Proyectos</h1>
+<div class="container-fluid" >
+  <div style="padding-bottom:5%;"><h1>Proyectos</h1></div>
   <div align="center" class="row">
-    <div class="card-group">
-      <div class="card" *ngFor="let el of projects; let i = index">
+    <div class="card-group mx-auto" >
+      <div class="card mx-3" *ngFor="let el of elements; let i = index">
         <div class="card-body">
           <h3 class="card-title">Tema: {{el.Titulo}}</h3>
           <p class="card-text">
@@ -82,4 +83,5 @@
       </div>
     </div>
   </div>
-</div-->
+</div>
+</div>

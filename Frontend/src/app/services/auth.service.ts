@@ -11,7 +11,9 @@ import { identifierName } from '@angular/compiler';
 })
 export class AuthService {
 
-  private URL = 'https://paratus.cf/api'
+  //private URL = 'https://paratus.cf/api'
+  private URL = 'http://localhost:4000/api'
+
   constructor(
     private http: HttpClient,
     private router: Router,
