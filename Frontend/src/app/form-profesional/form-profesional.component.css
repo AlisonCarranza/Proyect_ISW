@@ -1,0 +1,48 @@
+
+.titulo{
+        display: block;
+        font-size: 30px;
+        color: #0077b6;
+        line-height: 1.2;
+        text-align: center;
+        padding-bottom:20px; 
+        margin: auto;
+    }
+
+#form-login{
+        padding: 80px 50px;
+       
+     }
+textarea{
+    border-radius: 15px;
+}
+
+input:focus{
+        box-shadow: 0 2px 5px 0 rgba(15, 255, 254,1) 0 2px 10px 0 rgba(15, 255, 254,1)!important;
+        background-color: rgba(15, 255, 254,0.1)!important;
+    }
+option:focus{
+        box-shadow: 0 2px 5px 0 rgba(15, 255, 254,1) 0 2px 10px 0 rgba(15, 255, 254,1)!important;
+        background-color: rgba(15, 255, 254,0.1)!important;
+        border-radius: 30px;
+    }
+
+
+input.errorFondo:focus{
+        background-color: rgba(255,204,204,0.3)!important;
+    }
+
+.espaciado{
+        margin-bottom:30px;
+    }
+    
+
+.botonIn{	
+        text-align: center;	
+        margin-top: 50px;
+     }
+.error{
+        color: red;
+        font-size: .7rem;
+        margin-bottom: 20px;
+    }
