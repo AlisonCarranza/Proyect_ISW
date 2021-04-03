@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { FuncionComponent } from './funcion/funcion.component';
 import { FormProfesionalComponent } from './form-profesional/form-profesional.component';
+import { EnlaceRegistroComponent } from './enlace-registro/enlace-registro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
     FuncionComponent,
-    FormProfesionalComponent
+    FormProfesionalComponent,
+    EnlaceRegistroComponent
   ],
   imports: [
     BrowserModule,
