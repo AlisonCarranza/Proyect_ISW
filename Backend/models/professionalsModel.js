@@ -3,6 +3,7 @@ const bcrypt = require ('bcrypt-nodejs');
 
 const professionalSchema = new Schema({
     nombre: String,
+    apellido:String,
     username: String,
     email: String,
     password: String,
