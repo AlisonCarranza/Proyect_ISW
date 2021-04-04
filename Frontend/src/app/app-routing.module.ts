@@ -13,7 +13,6 @@ import { ProfileComponent } from "./components/profile/profile.component"
 import { FuncionComponent } from "./components/funcion/funcion.component";
 import { ProjectsComponent} from "./components/projects/projects.component";
 import { SearchProfComponent } from "./components/search-prof/search-prof.component";
-
 const routes: Routes = [
   {
     path: '',

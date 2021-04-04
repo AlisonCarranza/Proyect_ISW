@@ -25,12 +25,15 @@
         <div class="table-responsive">
             <table mdbTable #tableEl="mdbTable" class="z-depth-1 table table-striped table-bordered">
                 <thead>
-                    <th
+                    <tr>
+                      <th
                         *ngFor="let head of headElements; let i = index"
                         scope="col"
                     >
                         {{head}}
                     </th>
+                    <!--th> Acciones </th-->
+                    </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let el of elements; let i = index">
@@ -41,15 +44,15 @@
                         <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.Profesion}}</td>
                         <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.Tecnologias}}</td>
                         <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.Experiencia}}</td>
-                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">   
-                          <a  href="https://paratus.cf/perfil?professional={{el.Correo}}" class="btn btn-block btn-primary rounded-pill text-right"> Ver perfil</a>
+                        <!--td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">   
+                          <a  href="http://localhost:4200/perfil-prof?professional={{el.Correo}}" class="btn btn-block btn-primary rounded-pill text-center"> Ver perfil</a>
                           &nbsp;
-                      </td>
+                      </td-->
                     </tr>
                 </tbody>
                 <tfoot class="grey lighten-5 w-100">
                     <tr>
-                      <td colspan="9">
+                      <td colspan="7">
                         <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="elements"></mdb-table-pagination>
                       </td>
                     </tr>
