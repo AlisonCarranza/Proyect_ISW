@@ -78,7 +78,7 @@
             <p class="card-text">
               Descripción: {{el.Descripcion}}
             </p>
-            <h5 *ngIf="i+1">Fecha: {{el.Fecha}}</h5>
+            <h5 *ngIf="i+1">Fecha: {{el.Fecha | date:'dd-MM-yyyy'}}</h5>
             <div>
                <a style="padding:5px 30px;" href="https://paratus.cf/projects?projects={{el.ID}}" class="btn btn-success text-right">Ver</a>
             </div>     

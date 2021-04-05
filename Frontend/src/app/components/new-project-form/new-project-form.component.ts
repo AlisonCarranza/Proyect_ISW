@@ -24,7 +24,7 @@ export class NewProjectFormComponent implements OnInit {
     timeframe: '',
     roles: '',
     herramientas: '',
-    fecha_creacion: ''
+    fecha_creacion: null
   }
 
   constructor(
@@ -33,6 +33,7 @@ export class NewProjectFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.proyecto.fecha_creacion= this.current;
   }
 
   roles = [

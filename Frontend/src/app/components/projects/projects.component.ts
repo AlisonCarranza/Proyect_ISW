@@ -24,6 +24,9 @@ export class ProjectsComponent implements OnInit {
   proyecto={
     _id:''
   }
+//variable para almacenar el email del usuario logueado.
+  emailUser:string='';
+
 
 constructor(
   private cdRef: ChangeDetectorRef,
@@ -35,25 +38,28 @@ ngOnInit() {
 if(!this.authService.loggedIn()){
   this.router.navigate(['/search-prof']);
 }else { 
+//obtener email user
+this.comprobarUsuario();
 
 /*Llamado a la funcion que trae la consulta del backend*/
 this.authService.viewProject()
 .subscribe(
   res=>{
     this.projects=res;
-    console.log(this.projects);
+    //console.log(this.projects);
 
     //Guardando el numero de elementos de la consulta hecha
     this.docs= this.projects.Project;
-    console.log(this.docs);
+    //console.log(this.docs);
 
     //Guardando todos los elementos de la consulta hecha en projects
     this.projects= this.projects.proyecto;
-    console.log('muestra los proyectos',this.projects);
+    
+    //console.log('muestra los proyectos',this.projects);
 
     //Llamado a la funcion que llena los elementos a mostrar 
-    this.fillItems(this.docs);
-    
+    this.fillItems();
+        
   },
   err=>{console.log('error al mostrar proyectos',err)}
 );
@@ -61,21 +67,40 @@ this.authService.viewProject()
   
 }
 
-fillItems(limit: number){
-for (let i = 0; i < limit; i++) {
-  /*Llenando el arreglo de elementos, para agregar mas datos solo deben incluir una nueva linea
-    Con la forma: nombreIndice: this.projects[i].campoDeLaConsulta*/
-  this.elements.push({
-    ID:i.toString(),
-    Titulo: this.projects[i].titulo,
-    Descripcion: this.projects[i].descripcion,
-    Fecha: this.projects[i].fecha
+/*Permite seleccionar solo los proyectos del usuario que ha iniciado sesion.*/
+comprobarUsuario(){
+  this.authService.getProfile()
+   .subscribe(
+    res=>{
+      var user = res; 
+      this.emailUser = user.User.email;
+      console.log(this.emailUser);  
+    },
+    err=>{console.log('ERROR',err)}
+  );
+
+}
+
+/* Permite llenar el arreglo elements para poder mostrar en pantalla determinados campos de los proyectos*/
+fillItems(){
+  this.projects.forEach((project,id) => {
+    console.log(project.email);
+    console.log(this.emailUser);
+
+    if(project.email == this.emailUser){
+      console.log('entro xd');
+      this.elements.push({
+        ID:id.toString(),
+        Titulo: this.projects[id].titulo,
+        Descripcion: this.projects[id].descripcion,
+        Fecha: this.projects[id].fecha_creacion
+      });
+    
+      console.log(this.elements[0]);
+    }
+    
   });
-
-  console.log(this.elements[0]);
 }
-}
-
 
 }
 
