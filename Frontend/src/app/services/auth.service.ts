@@ -45,6 +45,11 @@ export class AuthService {
     return this.http.get<any>(this.URL + '/profile');
   }
 
+  uploadProfile(profile, id){
+
+    return this.http.post<any>(this.URL + '/upload-profile-pic?id='+id, profile);  
+  }
+
   getProfilePic(){
     return this.http.get(this.URL+'/profile-pic', { responseType: 'blob' })
       .pipe(
@@ -55,12 +60,20 @@ export class AuthService {
       );
   }
 
+  editProfile(user){
+    return this.http.post<any>(this.URL + '/edit-profile', user);
+  }
+
   recPass(user){
     return this.http.post<any>(this.URL + '/rec-password', user);
   }
 
   changeRecPass(user){
     return this.http.post<any>(this.URL + '/recover-password', user);
+  }
+
+  changePassword(user){
+    return this.http.post<any>(this.URL + '/change-password', user);
   }
 
   NewProjectForm(titulo){

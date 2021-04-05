@@ -27,7 +27,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { FuncionComponent } from './components/funcion/funcion.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { SearchProfComponent } from './components/search-prof/search-prof.component';
-
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,9 @@ import { SearchProfComponent } from './components/search-prof/search-prof.compon
     ProfileComponent,
     FuncionComponent,
     ProjectsComponent,
-    SearchProfComponent
+    SearchProfComponent,
+    SidebarComponent,
+    EditarPerfilComponent
   ],
   imports: [
     BrowserModule,

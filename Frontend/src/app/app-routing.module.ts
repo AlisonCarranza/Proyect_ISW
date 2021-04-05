@@ -13,6 +13,7 @@ import { ProfileComponent } from "./components/profile/profile.component"
 import { FuncionComponent } from "./components/funcion/funcion.component";
 import { ProjectsComponent} from "./components/projects/projects.component";
 import { SearchProfComponent } from "./components/search-prof/search-prof.component";
+import { EditarPerfilComponent } from "./components/editar-perfil/editar-perfil.component"
 
 const routes: Routes = [
   {
@@ -49,6 +50,11 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent
 
+  },
+  
+  {
+    path:'edit-profile',
+    component: EditarPerfilComponent
   },
 
   {

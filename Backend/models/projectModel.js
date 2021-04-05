@@ -9,8 +9,9 @@ const projectSchema = new Schema({
     presupuesto: Number,
     timeframe: String,
     roles: String,
-    herramientas: String,
-    fecha_creacion: Date
+    herramientas: String
+  }, {
+    timestamps: true
   });
 
   module.exports=model('project', projectSchema);
