@@ -9,7 +9,7 @@ const projectSchema = new Schema({
     presupuesto: Number,
     timeframe: String,
     roles: String,
-    herramientas: String,
+    herramientas: [],
     fecha_creacion: Date
   });
 

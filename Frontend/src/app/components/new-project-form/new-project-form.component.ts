@@ -20,8 +20,8 @@ export class NewProjectFormComponent implements OnInit {
     visibilidad: 'no',
     presupuesto: 1000,
     timeframe: '',
-    roles: '',
-    herramientas: 'indefinido',
+    roles: 'indefinido',
+    herramientas: [],
     fecha_creacion: 'indefinido'
   }
 
@@ -50,16 +50,33 @@ export class NewProjectFormComponent implements OnInit {
     'Ventas',
   ];
   herramientas = [
-    'Javascript',
     'HTML',
     'CSS',
-    'Mysql',
-    'React',
+    'Javascript',
     'PHP',
-    'Laravel',
     'Python',
+    'Java',
+    'C',
+    'C#',
+    'C++',
+    'R',
+    'Swift',
+    'Laravel',
+    'React',
     'Angular',
+    'Ruby on Rails',
+    'Django',
+    'ASP.NET',
+    'Express',
+    'Vue',
     'Node',
+    'Mysql',
+    'Oracle',
+    'PostgreSQL',
+    'MongoDB',
+    'C#',
+    'Amazon Web Services',
+    'Ingles',
   ];
 
   timeframes = [
@@ -76,10 +93,13 @@ export class NewProjectFormComponent implements OnInit {
   camposIncompletos=false;
   wrongPresupuesto=false;
   emptyPresupesto=false;
+  selectVisible=true;
+  deselectVisible=false;
 
+  //obtener tiempo
   current= new Date();
-  //month= this.current.getMonth();
-
+  //indice de herramientas
+  indexHerramientas=0;
 
 
   submitNewProjectForm(){
@@ -93,6 +113,7 @@ export class NewProjectFormComponent implements OnInit {
     }
     else {
       this.proyecto.fecha_creacion=this.current as unknown as string;
+      //this.proyecto.herramienta=this.selectedHerramientas;
       this.authService.NewProjectForm(this.proyecto)
       .subscribe(
        res =>{
@@ -132,6 +153,17 @@ export class NewProjectFormComponent implements OnInit {
     this.camposIncompletos=false;
     this.wrongPresupuesto=false;
     this.emptyPresupesto=false;
+  }
+
+  addHerramienta(herramienta){
+    this.proyecto.herramientas.push(herramienta);
+    this.indexHerramientas=this.herramientas.indexOf(herramienta);
+    this.herramientas.splice(this.indexHerramientas,1);
+  }
+  removeHerramienta(herramienta){
+    this.herramientas.push(herramienta);
+    this.indexHerramientas=this.proyecto.herramientas.indexOf(herramienta);
+    this.proyecto.herramientas.splice(this.indexHerramientas,1);
   }
 
 

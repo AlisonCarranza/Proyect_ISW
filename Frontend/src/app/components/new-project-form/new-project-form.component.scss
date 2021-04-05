@@ -44,9 +44,9 @@ body {
     background-color: rgba(15, 255, 254,0.2)!important;
 }
 
-label {
-  margin-top: 20px;
-  margin-bottom: 20px;
+.labelForm {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .alert{
@@ -95,12 +95,14 @@ label {
   align-content: center;
 }
 
+/*
   .btn {
     background-color: #0077b6;
     width: 500px;
     margin-top: 10px;
     margin-bottom: 10px;
   }
+  */
 
   #form-login{
       padding: 80px 50px;
@@ -115,5 +117,62 @@ label {
      position: fixed;
      top: 90px;
      right: 260px;
+
+   }
+   #btnSelectHerramienta{
+     margin-left: 25%;
+     margin-right: 25%;
+     max-width: 200px;
+     align-items: center;
+     //max-height: 50px;
+     //padding: 5px;
+     margin: 10px;
+     background-color: white;
+     color: #3c4856;
+     border-color:#3c4856;
+
+   }
+
+   #btnSelectHerramienta:hover{
+     margin-left: 25%;
+     margin-right: 25%;
+     max-width: 200px;
+     align-items: center;
+     //max-height: 50px;
+     //padding: 5px;
+     margin: 10px;
+     background-color: white;
+     color: #1b8236;
+     border-color:#1b8236;
+
+
+   }
+
+   #btnDeselectHerramienta{
+
+     margin-left: 25%;
+     margin-right: 25%;
+     max-width: 200px;
+     align-items: center;
+     //max-height: 50px;
+     //padding: 5px;
+     margin: 10px;
+     background-color: white;
+     color: #1b8236;
+     border-color:#1b8236;
+
+   }
+
+   #btnDeselectHerramienta:hover{
+     margin-left: 25%;
+     margin-right: 25%;
+     max-width: 200px;
+     align-items: center;
+     //max-height: 50px;
+     //padding: 5px;
+     margin: 10px;
+     background-color: white;
+     color: #ca3e4a;
+     border-color:#ca3e4a;
 
    }
