@@ -11,7 +11,7 @@ import { identifierName } from '@angular/compiler';
 })
 export class AuthService {
 
-  private URL = 'http://localhost:4000/api'
+  private URL = 'https://paratus.cf/api'
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -36,12 +36,18 @@ export class AuthService {
   }
 
   signIn(user){
+    console.log (this.URL)
     return this.http.post<any>(this.URL + '/signin', user);
   
   }  
 
   getProfile() {
     return this.http.get<any>(this.URL + '/profile');
+  }
+
+  uploadProfile(profile, id){
+
+    return this.http.post<any>(this.URL + '/upload-profile-pic?id='+id, profile);  
   }
 
   getProfilePic(){
@@ -54,6 +60,10 @@ export class AuthService {
       );
   }
 
+  editProfile(user){
+    return this.http.post<any>(this.URL + '/edit-profile', user);
+  }
+
   recPass(user){
     return this.http.post<any>(this.URL + '/rec-password', user);
   }
@@ -62,8 +72,20 @@ export class AuthService {
     return this.http.post<any>(this.URL + '/recover-password', user);
   }
 
+  changePassword(user){
+    return this.http.post<any>(this.URL + '/change-password', user);
+  }
+
   NewProjectForm(titulo){
     return this.http.post<any>(this.URL + '/nuevo-proyecto', titulo);
    }
+
+  searchProf(){
+    return this.http.get<any>(this.URL +'/search-prof');
+  } 
+
+  viewProject(){
+    return this.http.get<any[]>(this.URL +'/projects');
+  }
 
 }

@@ -15,17 +15,17 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-
   goMisProyectos(){
-
+    this.router.navigate(['/projects']);
   }
+
   goPublicarProyecto(){
-    this.router.navigate(['newProject']);
+    this.router.navigate(['/newProject']);
   }
-  goBuscarProyectos(){}
-  goBuscarTalento(){}
-  goContactos(){}
 
+  goBuscarTalento(){
+    this.router.navigate(['/search-prof']);
+  }
+  goContactos(){}
 
 }

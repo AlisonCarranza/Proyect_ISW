@@ -6,6 +6,7 @@ const Project = require('../models/projectModel');
 router.post('/api/nuevo-proyecto', async (req, res)=>{
 
     let token = req.headers.authorization.split(' ')[1];
+    console.log (token);
     try {
       if (User = await user.findOne({token})){
         const project = new Project({
@@ -16,8 +17,7 @@ router.post('/api/nuevo-proyecto', async (req, res)=>{
             presupuesto: req.body.presupuesto ,
             timeframe: req.body.timeframe ,
             roles:req.body.roles,
-            herramientas: req.body.herramientas ,
-            fecha_creacion: req.body.fecha_creacion
+            herramientas: req.body.herramientas
           });
           console.log(project);
         await project.save();

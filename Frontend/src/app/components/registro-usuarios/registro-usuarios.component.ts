@@ -122,8 +122,7 @@ export class RegistroUsuariosComponent implements OnInit {
         }else if(res.estado=='hecho'){
           localStorage.setItem('token', res.token);
           Swal.fire("Registro Exitoso", "Bienvenido a Paratus, ahora ya puedes crear tus  proyectos y conocer profesionales que harán tu idea una realidad", "success");
-          this.authService.logout();
-          this.router.navigate(['/login']);
+          this.router.navigate(['/profile']);
         }else{
           Swal.fire("Error", "Hubo un error en los datos ingresados, verifique cada uno de ellos!", "warning");
         }

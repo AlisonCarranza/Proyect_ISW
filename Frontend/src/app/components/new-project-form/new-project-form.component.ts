@@ -4,7 +4,11 @@ import { Router } from "@angular/router";
 import { AuthService } from 'src/app/services/auth.service';
 import * as alertify from 'alertifyjs';
 import Swal from "sweetalert2/dist/sweetalert2.js";
-
+//import { ConfigService } from 'src/app/services/config.service';
+//import { Model } from './projectModel';
+//import {Validation} from './validations';
+//import {MatFormFieldModule} from '@angular/material/form-field';
+//import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'abe-new-project-form',
@@ -29,7 +33,7 @@ export class NewProjectFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.proyecto.fecha_creacion= this.current;
+
   }
 
   roles = [
@@ -91,9 +95,6 @@ export class NewProjectFormComponent implements OnInit {
   emptyDescripcion=false;
   camposIncompletos=false;
   wrongPresupuesto=false;
-  emptyPresupesto=false;
-  selectVisible=true;
-  deselectVisible=false;
 
   //obtener tiempo
   current= new Date();
@@ -102,12 +103,41 @@ export class NewProjectFormComponent implements OnInit {
 
 
   submitNewProjectForm(){
-    //revisa si se cumplen las funciones
-    this.cleanValidations();
-    this.validation();
-    console.log(this.proyecto);
-    //si se cumplen las validaciones se ejecuta el codigo
-    if (this.emptyTitulo! || this.emptyDescripcion!|| this.wrongPresupuesto!   ){
+    if(this.proyecto.titulo==""){
+      alertify.error('No puede dejar el titulo en blanco');
+    }else if(this.proyecto.descripcion==""){
+      alertify.error('No puede dejar la descripcion en blanco');
+    }else if(this.proyecto.visibilidad==""){
+      alertify.error('No puede dejar la visibilidad en blanco');
+    }else if(this.proyecto.presupuesto==0){
+      alertify.error('El presupuesto no puede ser cero');
+    }else if(this.proyecto.timeframe==""){
+      alertify.error('No puede dejar el campo en blanco');
+      return false;
+    }else{
+      this.authService.NewProjectForm(this.proyecto)
+      .subscribe(
+        res =>{
+          if(res.estado=='ProjectSuccess'){
+            Swal.fire("Exitoso", "Proyecto guardado con éxito", "success");
+            this.router.navigate(['/profile']);
+          }else{
+            Swal.fire("Error", "Hubo un error en los datos ingresados, verifique cada uno de ellos!", "warning");
+          }
+
+        },
+        err =>{
+          console.log(err);
+          Swal.fire("Error", "Hubo un error en el sistema, favor intente de nuevo!", "error");
+          this.router.navigate(['/signup']);
+        }
+      )
+    }
+  }
+
+    /*
+    this.validationPresupuesto();
+    if (this.proyecto.titulo==="" || this.proyecto.descripcion===""|| this.proyecto.presupuesto===0 ){
       this.camposIncompletos=true;
     }
     else {
@@ -129,11 +159,8 @@ export class NewProjectFormComponent implements OnInit {
        }
      )
     }
-
-
   };
-
-  validation(){
+  validationPresupuesto(){
     if (this.proyecto.titulo===""){
       this.emptyTitulo=true;
     }
@@ -143,8 +170,12 @@ export class NewProjectFormComponent implements OnInit {
     if (this.proyecto.presupuesto<1000 || this.proyecto.presupuesto>300000 ){
       this.wrongPresupuesto=true;
     }
-
+    if (this.proyecto.presupuesto<1000 || this.proyecto.presupuesto>300000 ){
+      this.wrongPresupuesto=true;
+    }
   };
+  validationTitulo(){
+  };*/
 
   cleanValidations(){
     this.emptyTitulo=false;

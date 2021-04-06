@@ -1,0 +1,90 @@
+<!--Parte visual-->
+<!--div>
+  <h1>Proyectos</h1>
+  <div align="center" class="row">
+    <div class="card-group" *ngFor="let el of elements; let i = index">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title" >Tema: {{el.Titulo}}</h3>
+          <p class="card-text" >
+            Descripción: {{el.Descripcion}}
+          </p>
+          <h5 >Fecha: {{el.Fecha}}</h5>
+          <a  href="https://paratus.cf/projects?projects={{el.ID}}" class="btn btn-primary">Ver</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-group">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Marketing</h3>
+          <p class="card-text">
+            Necesito de marketing y publicidad para mi cafeteria.
+          </p>
+          <h5>4/2/2021</h5>
+          <a href="#" class="btn btn-primary">Ver</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-group">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Desarrollador de java</h3>
+          <p class="card-text">
+            Un desarrolador para trabajar en una aplicación de escritorio en lenguaje Java.
+          </p>
+          <h5>5/3/2021</h5>
+          <a href="#" class="btn btn-primary">Ver</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-group">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Desarrollo móvil</h3>
+          <p class="card-text">
+            Un desarrollador para trabajar en una aplicación móvil.
+          </p>
+          <h5>9/3/2021</h5>
+          <a href="#" class="btn btn-primary">Ver</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-group">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Fotógrafo</h3>
+          <p class="card-text">
+            Un fotógrafo prifesional para mis eventos sociales.
+          </p>
+          <h5>3/6/2020</h5>
+          <a href="#" class="btn btn-primary">Ver</a>
+        </div>
+      </div>
+    </div>
+  </div>       
+</div-->
+
+<!--Parte para usar cards dinamicas-->
+<div class=" row ">
+  <div class="container-fluid" >
+    <div style="padding-bottom:1%;"><h1>Proyectos</h1></div>
+    <div align="center" class="row">
+      <div class="card-group mx-auto" *ngFor="let el of elements; let i = index">
+        <div class="card mx-3 my-3" >
+          <img src="../../../assets/img/carpeta.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h3 class="card-title">Tema: {{el.Titulo}}</h3>
+            <p class="card-text">
+              Descripción: {{el.Descripcion}}
+            </p>
+            <h5 *ngIf="i+1">Fecha: {{el.Fecha | date:'dd-MM-yyyy'}}</h5>
+            <div>
+               <a style="padding:5px 30px;" href="https://paratus.cf/projects?projects={{el.ID}}" class="btn btn-success text-right">Ver</a>
+            </div>     
+          </div>            
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

@@ -1,3 +1,13 @@
+#form-login{
+  padding: 30px 50px;
+
+}
+
+#form-login2{
+  padding: 80px 50px;
+
+}
+
 body {
     overflow-x: hidden;
   }
@@ -5,6 +15,15 @@ body {
     overflow-x: hidden;
   }
 
+  .titulo{
+    display: block;
+    font-size: 30px;
+    color: #0077b6;
+    line-height: 1.2;
+    //text-align: center;
+    padding-bottom:30px;
+    margin: auto;
+}
 
  input {
     -webkit-border-radius: 20px;

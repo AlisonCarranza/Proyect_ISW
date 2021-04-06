@@ -10,8 +10,11 @@ import { LoginComponent } from "./components/login/login.component";
 import { RecoverPasswordComponent } from "./components/recover-password/recover-password.component";
 import { NewProjectFormComponent } from "./components/new-project-form/new-project-form.component";
 import { ProfileComponent } from "./components/profile/profile.component"
-import { EditarPerfilComponent } from "./components/editar-perfil/editar-perfil.component";
-
+import { FuncionComponent } from "./components/funcion/funcion.component";
+import { ProjectsComponent} from "./components/projects/projects.component";
+import { SearchProfComponent } from "./components/search-prof/search-prof.component";
+import { EditarPerfilComponent } from "./components/editar-perfil/editar-perfil.component"
+import { EnlaceRegistroComponent } from "./components/enlace-registro/enlace-registro.component"
 
 const routes: Routes = [
   {
@@ -23,6 +26,18 @@ const routes: Routes = [
   {
     path: 'home',
     component: LandingPageComponent
+
+  },
+
+  {
+    path: 'function',
+    component: FuncionComponent
+
+  },
+
+  {
+    path: 'type-user',
+    component: EnlaceRegistroComponent
 
   },
 
@@ -45,6 +60,12 @@ const routes: Routes = [
   },
 
   {
+    path:'edit-profile',
+    component: EditarPerfilComponent
+
+  },
+
+  {
     path: 'rec-password',
     component: RecPasswordComponent
 
@@ -61,9 +82,17 @@ const routes: Routes = [
     component: NewProjectFormComponent
 
   },
+
   {
-    path:'edit-profile',
-    component: EditarPerfilComponent
+    path: 'projects',
+    component: ProjectsComponent
+
+  },
+
+  {
+    path: 'search-prof',
+    component: SearchProfComponent
+
   }
 
 ];

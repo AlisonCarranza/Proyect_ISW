@@ -49,6 +49,10 @@ export class ProfileComponent implements OnInit {
     )
   }
 
+  goEditarPerfil(){
+    this.router.navigate(['/edit-profile']);
+  }
+
   getImage(): Observable<SafeResourceUrl> {
     return  this.authService.getProfilePic();
   }

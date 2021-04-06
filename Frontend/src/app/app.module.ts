@@ -24,9 +24,12 @@ import { LoginComponent } from './components/login/login.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 import { NewProjectFormComponent } from './components/new-project-form/new-project-form.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
+import { FuncionComponent } from './components/funcion/funcion.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { SearchProfComponent } from './components/search-prof/search-prof.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-
+import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
+import { EnlaceRegistroComponent } from './components/enlace-registro/enlace-registro.component';
 
 @NgModule({
   declarations: [
@@ -38,8 +41,12 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     RecoverPasswordComponent,
     NewProjectFormComponent,
     ProfileComponent,
+    FuncionComponent,
+    ProjectsComponent,
+    SearchProfComponent,
+    SidebarComponent,
     EditarPerfilComponent,
-    SidebarComponent
+    EnlaceRegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -54,16 +61,16 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     ReactiveFormsModule
   ],
   providers: [
-    AuthService, 
+    AuthService,
     AuthGuard,
-  
+
     {
       provide:HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-      
+
     }
-    
+
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]

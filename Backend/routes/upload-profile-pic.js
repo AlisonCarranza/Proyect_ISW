@@ -7,7 +7,7 @@ const user = require('../models/usersModel');
 const jwt = require('jsonwebtoken');
 
 var dir='';
-
+//../routes/upload
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, './upload')
@@ -39,12 +39,36 @@ router.get('/api/profile-pic',verifyToken, async (req, res) => {
         let token = req.headers.authorization.split(' ')[1];
         const User = await user.findOne({token});
         const imageName = User.picPerfil; 
-        const imagePath = path.join(__dirname, "./upload", imageName)
+        const imagePath = path.join(__dirname, "../upload", imageName)
         return res.sendFile(imagePath);
     } catch (error) {
         console.log(error)
         return res.status(401).json({estado:'Error'})      
     } 
+});
+
+router.post('/api/upload-profile-pic', upload.single('file'), async(req, res) => {
+    try {
+        let token = req.headers.authorization.split(' ')[1];
+        const User = await user.findOne({token});
+        const perfilPath = path.join(__dirname, "../upload", User.picPerfil);          
+            email = User.email; 
+            if(await user.updateOne({email},{$set:{picPerfil:dir}})){
+                //console.log('Hola2')
+                defaultPath=path.join(__dirname, "../upload/Default.png")
+                if(perfilPath!=defaultPath){
+                    unlink(perfilPath);
+                }
+            return res.json({estado:'Hecho'});
+            }
+        else{
+            return res.json({estado:'Fallo'});
+        } 
+    } catch (error) {
+        console.log(error)
+        return res.status(401).json({estado:'Error'})
+    }
+
 });
 
 async function verifyToken(req, res, next) {
@@ -68,5 +92,6 @@ async function verifyToken(req, res, next) {
         return res.status(401).send('Unauhtorized Request');
     }
 }
+
 
 module.exports = router;
