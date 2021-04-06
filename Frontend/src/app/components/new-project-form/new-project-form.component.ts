@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { AuthService } from 'src/app/services/auth.service';
-//import { ConfigService } from 'src/app/services/config.service';
-//import { Model } from './projectModel';
-//import {Validation} from './validations';
-//import {MatFormFieldModule} from '@angular/material/form-field';
-//import {FormControl} from '@angular/forms';
+import * as alertify from 'alertifyjs';
+import Swal from "sweetalert2/dist/sweetalert2.js";
+
 
 @Component({
   selector: 'abe-new-project-form',
@@ -22,7 +20,7 @@ export class NewProjectFormComponent implements OnInit {
     timeframe: '',
     roles: 'indefinido',
     herramientas: [],
-    fecha_creacion: 'indefinido'
+    fecha_creacion: null
   }
 
   constructor(
@@ -31,6 +29,7 @@ export class NewProjectFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.proyecto.fecha_creacion= this.current;
   }
 
   roles = [
