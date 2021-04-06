@@ -29,6 +29,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { SearchProfComponent } from './components/search-prof/search-prof.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
+import { EnlaceRegistroComponent } from './components/enlace-registro/enlace-registro.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.
     ProjectsComponent,
     SearchProfComponent,
     SidebarComponent,
-    EditarPerfilComponent
+    EditarPerfilComponent,
+    EnlaceRegistroComponent
   ],
   imports: [
     BrowserModule,

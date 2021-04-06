@@ -14,6 +14,7 @@ import { FuncionComponent } from "./components/funcion/funcion.component";
 import { ProjectsComponent} from "./components/projects/projects.component";
 import { SearchProfComponent } from "./components/search-prof/search-prof.component";
 import { EditarPerfilComponent } from "./components/editar-perfil/editar-perfil.component"
+import { EnlaceRegistroComponent } from "./components/enlace-registro/enlace-registro.component"
 
 const routes: Routes = [
   {
@@ -31,6 +32,12 @@ const routes: Routes = [
   {
     path: 'function',
     component: FuncionComponent
+
+  },
+
+  {
+    path: 'type-user',
+    component: EnlaceRegistroComponent
 
   },
 

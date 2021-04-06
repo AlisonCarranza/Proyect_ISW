@@ -1,68 +1,90 @@
-<div class="row">
-    <div>
-        <h1>
-            Proyectos
-        </h1>
-        <!--div *ngFor="let el of elements; let i = index"-->
-            <div class="card-group">
-                <!--article class="card">
-                  <img 
-                    src="{{el.PicProject}}"
-                    class="img"
-                    alt=""
-                  />
-                  <div class="card-body">
-                    <h2 class="card-title">{{el.Nombre}}</h2>
-                    <p class="card-text">
-                        {{el.Descripcion}}
-                    </p>
-                    <button type="button" class="btn btn-primary">Ver Proyecto</button>
-                  </div>
-                </article-->
-                <article class="card">
-                  <img
-                    src="https://as01.epimg.net/betech/imagenes/2017/11/11/portada/1510424740_541471_1510425197_noticia_normal.jpg"
-                    class="img"
-                    alt=""
-                  />
-                  <div class="card-body">
-                    <h2 class="card-title">Fotografia</h2>
-                    <p class="card-text">
-                      Tengo un proyecto de fotografía, necesito de un fotografo profesional.
-                    </p>
-                    <button type="button" class="btn btn-primary">Ver Proyecto</button>
-                  </div>
-                </article>
-                <article class="card">
-                  <img
-                    src="https://redjovencoslada.es/wp-content/uploads/2020/01/aplicaciones_java.png"
-                    class="img"
-                    alt=""
-                  />
-                  <div class="card-body">
-                    <h2 class="card-title">Desarrollo web</h2>
-                    <p class="card-text">
-                      Necesito un desarrolador web para una plataforma de tutorias.
-                    </p>
-                    <button type="button" class="btn btn-primary">Ver Proyecto</button>
-                  </div>
-                </article>
-                <article class="card">
-                  <img
-                    src="https://madriddiferente.com/wp-content/uploads/2019/11/semanacocinaitaliana2019.jpg"
-                    class="img"
-                    alt=""
-                  />
-                  <div class="card-body">
-                    <h2 class="card-title">Gastronomía Italiana</h2>
-                    <p class="card-text">
-                      Necesito un especialista en Marketing para que me ayude con la publicidad de mi restaurante.
-                    </p>
-                    <button type="button" class="btn btn-primary">Ver Proyecto</button>
-                  </div>
-                </article>
-            </div>
-        <!--/div-->
+<!--Parte visual-->
+<!--div>
+  <h1>Proyectos</h1>
+  <div align="center" class="row">
+    <div class="card-group" *ngFor="let el of elements; let i = index">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title" >Tema: {{el.Titulo}}</h3>
+          <p class="card-text" >
+            Descripción: {{el.Descripcion}}
+          </p>
+          <h5 >Fecha: {{el.Fecha}}</h5>
+          <a  href="https://paratus.cf/projects?projects={{el.ID}}" class="btn btn-primary">Ver</a>
+        </div>
       </div>
+    </div>
+    <div class="card-group">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Marketing</h3>
+          <p class="card-text">
+            Necesito de marketing y publicidad para mi cafeteria.
+          </p>
+          <h5>4/2/2021</h5>
+          <a href="#" class="btn btn-primary">Ver</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-group">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Desarrollador de java</h3>
+          <p class="card-text">
+            Un desarrolador para trabajar en una aplicación de escritorio en lenguaje Java.
+          </p>
+          <h5>5/3/2021</h5>
+          <a href="#" class="btn btn-primary">Ver</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-group">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Desarrollo móvil</h3>
+          <p class="card-text">
+            Un desarrollador para trabajar en una aplicación móvil.
+          </p>
+          <h5>9/3/2021</h5>
+          <a href="#" class="btn btn-primary">Ver</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-group">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Fotógrafo</h3>
+          <p class="card-text">
+            Un fotógrafo prifesional para mis eventos sociales.
+          </p>
+          <h5>3/6/2020</h5>
+          <a href="#" class="btn btn-primary">Ver</a>
+        </div>
+      </div>
+    </div>
+  </div>       
+</div-->
 
-</div>
+<!--Parte para usar cards dinamicas-->
+<div class=" row ">
+  <div class="container-fluid" >
+    <div style="padding-bottom:1%;"><h1>Proyectos</h1></div>
+    <div align="center" class="row">
+      <div class="card-group mx-auto" *ngFor="let el of elements; let i = index">
+        <div class="card mx-3 my-3" >
+          <img src="../../../assets/img/carpeta.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h3 class="card-title">Tema: {{el.Titulo}}</h3>
+            <p class="card-text">
+              Descripción: {{el.Descripcion}}
+            </p>
+            <h5 *ngIf="i+1">Fecha: {{el.Fecha | date:'dd-MM-yyyy'}}</h5>
+            <div>
+               <a style="padding:5px 30px;" href="https://paratus.cf/projects?projects={{el.ID}}" class="btn btn-success text-right">Ver</a>
+            </div>     
+          </div>            
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

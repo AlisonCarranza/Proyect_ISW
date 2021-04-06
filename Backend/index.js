@@ -22,10 +22,9 @@ app.use (require ('./routes/upload-profile-pic'));
 app.use (require ('./routes/change-password'));
 app.use (require ('./routes/rec-password'));
 app.use (require ('./routes/recover-password'));
-app.use(require ('./routes/newform'));
-
-
-
+app.use (require ('./routes/newform'));
+app.use (require ('./routes/projects'));
+app.use (require ('./routes/search-prof'));
 
 
 app.listen(4000,function(){

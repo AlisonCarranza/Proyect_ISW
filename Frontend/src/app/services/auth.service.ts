@@ -80,4 +80,12 @@ export class AuthService {
     return this.http.post<any>(this.URL + '/nuevo-proyecto', titulo);
    }
 
+  searchProf(){
+    return this.http.get<any>(this.URL +'/search-prof');
+  } 
+
+  viewProject(){
+    return this.http.get<any[]>(this.URL +'/projects');
+  }
+
 }

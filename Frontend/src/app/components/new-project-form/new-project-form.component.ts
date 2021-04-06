@@ -23,8 +23,7 @@ export class NewProjectFormComponent implements OnInit {
     presupuesto: 0,
     timeframe: '',
     roles: '',
-    herramientas: '',
-    fecha_creacion: ''
+    herramientas: ''
   }
 
   constructor(
@@ -33,6 +32,7 @@ export class NewProjectFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
   }
 
   roles = [
@@ -137,10 +137,7 @@ export class NewProjectFormComponent implements OnInit {
        }
      )
     }
-
-
   };
-
   validationPresupuesto(){
     if (this.proyecto.titulo===""){
       this.emptyTitulo=true;
@@ -156,7 +153,6 @@ export class NewProjectFormComponent implements OnInit {
     }
   };
   validationTitulo(){
-
   };*/
 
 }

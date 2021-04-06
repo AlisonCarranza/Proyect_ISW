@@ -1,8 +1,9 @@
-import { formatDate } from '@angular/common';
-import { Component, OnInit, HostListener, ViewChild,AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import {MdbTableDirective, MdbTablePaginationComponent} from 'angular-bootstrap-md';
+import { DatePipe, formatDate } from '@angular/common';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import { Router } from "@angular/router";
+import { HttpErrorResponse } from '@angular/common/http';
+import { ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'abe-projects',
@@ -11,74 +12,93 @@ import { Router } from "@angular/router";
 })
 export class ProjectsComponent implements OnInit {
 
-  el=null;
-  //Childs necesarios para usar el ngAfterViewInit (para la paginacion)
-  //@ViewChild(MdbTablePaginationComponent, { static: true }) mdbTablePagination: MdbTablePaginationComponent;
-  //@ViewChild(MdbTableDirective, {static: true}) mdbTable:MdbTableDirective;
+  @ViewChild('vc', {read: ViewContainerRef}) vc: ViewContainerRef;
 
-  //elementos a mostrar en la tabla del html
+  //elementos a mostrar en la card del html
     elements: any = [];
-  //variable para el Datasource de la tabla
-    previous: string;
-  /* variable para la cantidad de documentos de la base y asi saber el tamaño 
+  /*variable para la cantidad de documentos de la base y asi saber el tamaño 
     que tendra el arreglo elements*/
     docs:number;
   //Arreglo para almacenar los datos recibidos de la consulta a la base
     projects:any=[];
     proyecto={
-      correo:''
+      _id:''
     }
-
+  //variable para almacenar el email del usuario logueado.
+    emailUser:string='';
+  
+  
   constructor(
     private cdRef: ChangeDetectorRef,
     private authService: AuthService,
     private router: Router) { }
-
-ngOnInit() {
+  
+  ngOnInit() {
+    console.log("Carga el componente");
   if(!this.authService.loggedIn()){
-    this.router.navigate(['/projects']);
-  ///}else { 
-
-  /*Llamado a la funcion que trae la consulta del backend, lleva un parametro (this.elements) 
-    porque en el servicio "auth" deje la funcion como si fuese post, en realidad deberia ser
-    get y no deberia llevar ningun parametro asi que no se sorprendan por ver eso ahi*/
-  /*this.authService.viewProjects()
+    this.router.navigate(['/search-prof']);
+  }else { 
+  //obtener email user
+  this.comprobarUsuario();
+  
+  /*Llamado a la funcion que trae la consulta del backend*/
+  this.authService.viewProject()
   .subscribe(
     res=>{
+      this.projects=res;
+      //console.log(this.projects);
+  
       //Guardando el numero de elementos de la consulta hecha
-      this.docs=res.Project;
-      console.log(this.docs);
-      //Guardando todos los elementos de la consulta hecha en profeessionals
-      this.projects=res.proyecto;
-      //Llamado a la funcion que llena los elementos a mostrar en la tabla
-      this.fillItems(this.docs);
+      this.docs= this.projects.Project;
+      //console.log(this.docs);
+  
+      //Guardando todos los elementos de la consulta hecha en projects
+      this.projects= this.projects.proyecto;
       
+      //console.log('muestra los proyectos',this.projects);
+  
+      //Llamado a la funcion que llena los elementos a mostrar 
+      this.fillItems();
+          
     },
-    err=>{console.log(err)}
-  );*/
+    err=>{console.log('error al mostrar proyectos',err)}
+  );
   }  
     
-}
-
-fillItems(limit){
-  for (let i = 0; i < limit; i++) {
-    /*Llenando el arreglo de elementos, para agregar mas datos solo deben incluir una nueva linea
-      Con la forma: nombreIndice: this.developer[i].campoDeLaConsulta, tambien recuerden agregar un
-      valor a headElements para el encabezado de cada columna que agreguen*/
-    this.elements.push({
-      ID:i.toString(),
-      Nombre: this.projects[i].nombres,
-      Apellido: this.projects[i].apellidos,
-      Correo: this.projects[i].email,
-      Genero: this.projects[i].sexo,
-      Direccion: this.projects[i].direccion,
-      Area: this.projects[i].area,
-      Descripcion:this.projects[i].descripcion,
-      PicPoroject:this.projects[i].picProject
-
+  }
+  
+  /*Permite seleccionar solo los proyectos del usuario que ha iniciado sesion.*/
+  comprobarUsuario(){
+    this.authService.getProfile()
+     .subscribe(
+      res=>{
+        var user = res; 
+        this.emailUser = user.User.email;
+        console.log(this.emailUser);  
+      },
+      err=>{console.log('ERROR',err)}
+    );
+  
+  }
+  
+  /* Permite llenar el arreglo elements para poder mostrar en pantalla determinados campos de los proyectos*/
+  fillItems(){
+    this.projects.forEach((project,id) => {
+      console.log(project.email);
+      console.log(this.emailUser);
+  
+      if(project.email == this.emailUser){
+        console.log('entro xd');
+        this.elements.push({
+          ID:id.toString(),
+          Titulo: this.projects[id].titulo,
+          Descripcion: this.projects[id].descripcion,
+          Fecha: this.projects[id].createdAt
+        });
+        console.log (this.projects[id].fecha_creacion)
+        console.log(this.elements[0]);
+      }
+      
     });
-}
-  //this.mdbTable.setDataSource(this.elements);
-  //this.previous = this.mdbTable.getDataSource();
-}
+  }
 }

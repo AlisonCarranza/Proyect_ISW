@@ -17,7 +17,7 @@ export class SearchProfComponent implements OnInit {
 //elementos a mostrar en la tabla del html
   elements: any = [];
 //Arreglo de cabeceras de la tabla
-  headElements = ['Profesión', 'Nombre', 'Apellido', 'Correo', 'Genero','Direccion'];
+  headElements = ['Nombre', 'Correo', 'Dirección', 'Profesión', 'Tecnologías', 'Experiencia'];
 //variable para la busqueda
   searchText: string = '';
 //variable para el Datasource de la tabla
@@ -27,7 +27,7 @@ export class SearchProfComponent implements OnInit {
   docs:number;
 //Arreglo para almacenar los datos recibidos de la consulta a la base
   professionals:any=[];
-  professional={
+  profesional={
     correo:''
   }
 
@@ -43,31 +43,33 @@ constructor(
 
 ngOnInit() {
 if(!this.authService.loggedIn()){
-  this.router.navigate(['/search-prof']);
-//}else { 
+  this.router.navigate(['/signin']);
+}else { 
 
 /*Llamado a la funcion que trae la consulta del backend, lleva un parametro (this.elements) 
   porque en el servicio "auth" deje la funcion como si fuese post, en realidad deberia ser
   get y no deberia llevar ningun parametro asi que no se sorprendan por ver eso ahi*/
-/*this.authService.searchProf()
+this.authService.searchProf()
 .subscribe(
   res=>{
     //Guardando el numero de elementos de la consulta hecha
-    this.docs=res.Professional;
-    console.log(this.docs);
+    this.professionals=res;
+    this.docs=this.professionals.Professional;
+    //console.log(this.docs);
     //Guardando todos los elementos de la consulta hecha en profeessionals
-    this.professionals=res.profesional;
+    this.professionals=this.professionals.profesional;
+    //console.log('muestra los proyectos',this.professionals);
     //Llamado a la funcion que llena los elementos a mostrar en la tabla
     this.fillItems(this.docs);
     
   },
   err=>{console.log(err)}
-);*/
+);
 }  
   
 }
 
-fillItems(limit){
+fillItems(limit:number){
 for (let i = 0; i < limit; i++) {
   /*Llenando el arreglo de elementos, para agregar mas datos solo deben incluir una nueva linea
     Con la forma: nombreIndice: this.developer[i].campoDeLaConsulta, tambien recuerden agregar un
@@ -75,11 +77,12 @@ for (let i = 0; i < limit; i++) {
   this.elements.push({
     ID:i.toString(),
     Nombre: this.professionals[i].nombre,
-    Apellido: this.professionals[i].apellido,
+    //Apellido: this.professionals[i].apellido,
     Correo: this.professionals[i].email,
-    Genero: this.professionals[i].sexo,
     Direccion: this.professionals[i].direccion,
-    Area: this.professionals[i].profesion
+    Profesion: this.professionals[i].profesion,
+    Tecnologias: this.professionals[i].tecnologias,
+    Experiencia: this.professionals[i].experiencia
   });
 }
 this.mdbTable.setDataSource(this.elements);
@@ -96,7 +99,7 @@ searchItems() {
     /*Busqueda dentro de los datos de la tabla, si se desea agregar un nuevo campo a la busqueda, 
       Solo hay que agregar al arreglo de la funcion el nombre del indice usado en fillItems()
       para el campo que se desea incluir en la busqueda*/
-      this.elements = this.mdbTable.searchLocalDataByMultipleFields(this.searchText, ['Nombre', 'Apellido','Correo', 'Estado', 'Lenguajes']);
+      this.elements = this.mdbTable.searchLocalDataByMultipleFields(this.searchText, ['Nombre', 'Correo', 'Tecnologias', 'Profesion']);
       this.mdbTable.setDataSource(prev);
   }
 }
