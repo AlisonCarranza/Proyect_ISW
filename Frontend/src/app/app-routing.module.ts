@@ -13,8 +13,10 @@ import { ProfileComponent } from "./components/profile/profile.component"
 import { FuncionComponent } from "./components/funcion/funcion.component";
 import { ProjectsComponent} from "./components/projects/projects.component";
 import { SearchProfComponent } from "./components/search-prof/search-prof.component";
-import { EditarPerfilComponent } from "./components/editar-perfil/editar-perfil.component"
-import { EnlaceRegistroComponent } from "./components/enlace-registro/enlace-registro.component"
+import { EditarPerfilComponent } from "./components/editar-perfil/editar-perfil.component";
+import { EnlaceRegistroComponent } from "./components/enlace-registro/enlace-registro.component";
+import { ProyectCommentsComponent } from './components/proyect-details/proyect-comments/proyect-comments.component';
+import { ProyectCommentsEditorComponent } from './components/proyect-details/proyect-comments-editor/proyect-comments-editor.component';
 
 const routes: Routes = [
   {
@@ -93,7 +95,18 @@ const routes: Routes = [
     path: 'search-prof',
     component: SearchProfComponent
 
+  },
+
+  {
+    path: 'proyect-comments-editor',
+    component: ProyectCommentsEditorComponent
+
+  },
+  {
+    path: 'proyect-comments',
+    component: ProyectCommentsComponent
   }
+
 
 ];
 

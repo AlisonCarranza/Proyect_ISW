@@ -176,7 +176,7 @@ export class NewProjectFormComponent implements OnInit {
   };
   validationTitulo(){
   };*/
-
+/*
   cleanValidations(){
     this.emptyTitulo=false;
     this.emptyDescripcion=false;
@@ -184,7 +184,7 @@ export class NewProjectFormComponent implements OnInit {
     this.wrongPresupuesto=false;
     this.emptyPresupesto=false;
   }
-
+*/
   addHerramienta(herramienta){
     this.proyecto.herramientas.push(herramienta);
     this.indexHerramientas=this.herramientas.indexOf(herramienta);

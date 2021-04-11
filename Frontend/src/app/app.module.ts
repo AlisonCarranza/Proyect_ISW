@@ -30,6 +30,8 @@ import { SearchProfComponent } from './components/search-prof/search-prof.compon
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
 import { EnlaceRegistroComponent } from './components/enlace-registro/enlace-registro.component';
+import { ProyectCommentsEditorComponent } from './components/proyect-details/proyect-comments-editor/proyect-comments-editor.component';
+import { ProyectCommentsComponent } from './components/proyect-details/proyect-comments/proyect-comments.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,10 @@ import { EnlaceRegistroComponent } from './components/enlace-registro/enlace-reg
     SearchProfComponent,
     SidebarComponent,
     EditarPerfilComponent,
-    EnlaceRegistroComponent
+    EnlaceRegistroComponent,
+    ProyectCommentsEditorComponent,
+    ProyectCommentsComponent
+
   ],
   imports: [
     BrowserModule,
