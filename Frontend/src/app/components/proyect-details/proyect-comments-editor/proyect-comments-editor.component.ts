@@ -70,7 +70,6 @@ export class ProyectCommentsEditorComponent implements OnInit {
           }else{
             Swal.fire("Error", "Hubo un error en los datos ingresados, verifique cada uno de ellos!", "warning");
           }
-        
 
         },
         err =>{

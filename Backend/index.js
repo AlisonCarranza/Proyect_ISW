@@ -26,7 +26,7 @@ app.use (require ('./routes/newform'));
 app.use (require ('./routes/projects'));
 app.use (require ('./routes/search-prof'));
 app.use (require ('./routes/newComment'));
-
+app.use (require ('./routes/getComments'));
 app.listen(4000,function(){
      console.log('El Servidor esta levantado.');
 
