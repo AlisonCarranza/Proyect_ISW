@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require ('bcrypt-nodejs');
 
 const project = require('../models/projectModel');
-const projectModel = require('../models/projectModel');
+//const projectModel = require('../models/projectModel');
 
 router.get('/api/projects', async(req, res)=>{
     console.log('peticion del backend');
@@ -18,6 +18,17 @@ router.get('/api/projects', async(req, res)=>{
         res.json({estado:'Error'});  
         console.log('fallo')
     }
+});
+
+//obtener un proyecto
+router.get('/api/prueba/:id', function (req, res) {
+    project.find({_id:req.params.id}).then(resultado=>{
+        res.send(resultado[0]);
+        res.end();
+    }).catch(error=>{
+        res.send(error);
+        res.end();
+    });
 });
 
 module.exports = router;

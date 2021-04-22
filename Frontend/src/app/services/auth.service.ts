@@ -11,8 +11,8 @@ import { identifierName } from '@angular/compiler';
 })
 export class AuthService {
 
-  private URL = 'https://paratus.cf/api'
-  //private URL = 'http://localhost:4000/api'
+  //private URL = 'https://paratus.cf/api'
+  private URL = 'http://localhost:4000/api'
 
   constructor(
     private http: HttpClient,
@@ -75,6 +75,10 @@ export class AuthService {
 
   viewProject(){
     return this.http.get<any[]>(this.URL +'/projects');
+  }
+
+  getProyecto(id){
+    return this.http.get<any[]>(this.URL+'/prueba/:'+id);
   }
 
 

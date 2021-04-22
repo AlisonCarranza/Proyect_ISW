@@ -1,4 +1,5 @@
 //Import de dependencias
+import { CommonModule } from "@angular/common";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -29,6 +30,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { FuncionComponent } from './components/funcion/funcion.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { SearchProfComponent } from './components/search-prof/search-prof.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -46,6 +48,7 @@ import { SearchProfComponent } from './components/search-prof/search-prof.compon
     SearchProfComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserModule,
@@ -57,7 +60,8 @@ import { SearchProfComponent } from './components/search-prof/search-prof.compon
     FormsModule,
     MatCardModule,
     ReactiveFormsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    NgbModule
   ],
   providers: [
     AuthService, 

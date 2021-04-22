@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { HttpErrorResponse } from '@angular/common/http';
 import { ViewContainerRef } from '@angular/core';
 
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'abe-projects',
@@ -16,6 +17,8 @@ export class ProjectsComponent implements OnInit {
 
 //elementos a mostrar en la card del html
   elements: any = [];
+//indice correspondiente del array elements
+  idElement:any;
 /*variable para la cantidad de documentos de la base y asi saber el tamaño 
   que tendra el arreglo elements*/
   docs:number;
@@ -27,8 +30,11 @@ export class ProjectsComponent implements OnInit {
 //variable para almacenar el email del usuario logueado.
   emailUser:string='';
 
+//modal
+closeResult = '';  
 
 constructor(
+  private modalService: NgbModal,
   private cdRef: ChangeDetectorRef,
   private authService: AuthService,
   private router: Router) { }
@@ -55,7 +61,7 @@ this.authService.viewProject()
     //Guardando todos los elementos de la consulta hecha en projects
     this.projects= this.projects.proyecto;
     
-    //console.log('muestra los proyectos',this.projects);
+    console.log('muestra los proyectos',this.projects);
 
     //Llamado a la funcion que llena los elementos a mostrar 
     this.fillItems();
@@ -74,7 +80,7 @@ comprobarUsuario(){
     res=>{
       var user = res; 
       this.emailUser = user.User.email;
-      console.log(this.emailUser);  
+      //console.log(this.emailUser);  
     },
     err=>{console.log('ERROR',err)}
   );
@@ -88,18 +94,46 @@ fillItems(){
     console.log(this.emailUser);
 
     if(project.email == this.emailUser){
-      console.log('entro xd');
       this.elements.push({
         ID:id.toString(),
         Titulo: this.projects[id].titulo,
         Descripcion: this.projects[id].descripcion,
-        Fecha: this.projects[id].fecha_creacion
+        Fecha: this.projects[id].createdAt,
+        Roles: this.projects[id].roles,
+        Herramientas: this.projects[id].herramientas,
+        Presupuesto: this.projects[id].presupuesto,
+        Duracion:this.projects[id].timeframe
       });
     
-      console.log(this.elements[0]);
+      //console.log(this.elements[0]);
     }
     
   });
+}
+
+//Funcion para traer la informacion de un proyecto en especifico.  
+mostrarProyecto(content,id){
+  this.open(content);
+  this.idElement=parseInt(id);
+}
+
+//modal
+open(content) {
+  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.closeResult = `Closed with: ${result}`;
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+}
+
+private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return `with: ${reason}`;
+  }
 }
 
 }

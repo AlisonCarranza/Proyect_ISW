@@ -73,7 +73,7 @@ const routes: Routes = [
     component: ProjectsComponent
 
   },
-
+  
   {
     path: 'search-prof',
     component: SearchProfComponent
