@@ -93,8 +93,9 @@ export class AuthService {
     return this.http.post<any>(this.URL +'/proyect-comments-editor',comment);
   }
 
-  getComments(){
-    return this.http.get<any>(this.URL +'/get-comments');
+  getComments(id_proyecto){
+    console.log(id_proyecto);
+    return this.http.post<any>(this.URL +'/get-comments',id_proyecto);
   }
 
 

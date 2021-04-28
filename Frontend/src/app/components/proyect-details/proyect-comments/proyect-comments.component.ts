@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './proyect-comments.component.html',
   styleUrls: ['./proyect-comments.component.scss']
 })
+
 export class ProyectCommentsComponent implements OnInit {
 
   constructor(
@@ -16,23 +17,37 @@ export class ProyectCommentsComponent implements OnInit {
     private router: Router
   ) { }
 
+  comentarioPrevio=[];
+
+  id_proyecto={
+      id:'607643208df26506a0b62a88'
+  }
+
+
   ngOnInit(): void {
-    this.authService.getComments()
+    this.authService.getComments(this.id_proyecto)
     .subscribe(
       res=>{
-        console.log(res);
+
+        for(let obj of res.comment.reverse()){
+          this.comentarioPrevio.push(obj);
+        }
+        console.log(this.comentarioPrevio);
       },
-      err=>{console.log('error al mostrar proyectos',err)}
+        err=>{console.log('error al mostrar proyectos',err)}
     );
+  }
+
+  imgUrl="https://comicvine1.cbsistatic.com/uploads/scale_small/1/14487/7767617-db726ed6-c3ba-47ac-ab77-bf29614bce2d.jpeg";
+
+
+  addComentario(comentario) {
+    console.log(comentario);
+    this.comentarioPrevio.unshift( { nombre: comentario.nombre , cuerpo: comentario.cuerpo, fecha_creacion: "Justo Ahora"})
+
 
   }
-  imgUrl="https://comicvine1.cbsistatic.com/uploads/scale_small/1/14487/7767617-db726ed6-c3ba-47ac-ab77-bf29614bce2d.jpeg"
 
-
-  comentarioAnterior={
-    cuerpo: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-    fecha_creacion: null
-  }
 
 
 }

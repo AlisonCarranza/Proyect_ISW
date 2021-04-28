@@ -2,10 +2,12 @@
   <div class="d-flex justify-content-start">
     <img class="rounded-circle img-fluid" [src]="imgURL" alt="" id="profile-pic">
     <label class="d-flex flex-column bd-highlight mb-3">
-      <label class="p-2" ><h6>&nbsp;&nbsp;{{this.profile.username}}&nbsp;&nbsp;03/04/2021 </h6></label>
-      <textarea class="p-2" name="name" rows="8" cols="80" id="commentTextArea"></textarea>
+      <label class="p-2" ><h6>&nbsp;&nbsp;{{this.profile.username}}&nbsp;&nbsp; </h6></label>
+      <textarea class="p-2" name="cuerpoEditor" rows="4" cols="80" id="commentTextArea"
+      [(ngModel)]="comentario.cuerpo"
+      ></textarea>
       <div class="d-flex justify-content-end">
-        <button class="btn btn-xl btn-primary" (click)="enviarComentario()" type="button" name="button" id="btnResponder">Responder</button>
+        <button class="btn btn-xl btn-primary" (click)="enviarComentario()" type="button" name="button" id="btnResponder">Agregar comentario</button>
       </div>
     </label>
   </div>

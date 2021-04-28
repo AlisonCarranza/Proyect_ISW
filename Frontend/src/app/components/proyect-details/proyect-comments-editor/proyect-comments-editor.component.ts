@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output, Input,  EventEmitter } from '@angular/core';
 import {  AuthService} from "../../../services/auth.service";
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from "rxjs";
@@ -21,6 +21,11 @@ import * as alertify from 'alertifyjs';
 })
 export class ProyectCommentsEditorComponent implements OnInit {
 
+  @Input() id: string; //Decora propiedad con Input
+  @Output() newCommentEvent = new EventEmitter<any>();  //envia informacion al comentario para actualizar
+
+
+
   constructor(
     public authService: AuthService,
     private miDatePipe: DatePipe,
@@ -29,20 +34,25 @@ export class ProyectCommentsEditorComponent implements OnInit {
 
   imgURL: any;
   profile={
-    username: '',
+    username: ''
 
   };
   comentario={
+    nombre: '',
     cuerpo: '',
-    fecha_creacion: null
+    fecha_creacion: null,
+    id_proyecto: ''
+    //id_proyecto: ''
   }
+  //fecha= new Date();
+
+
 
   ngOnInit(): void {
     this.authService.getProfile()
     .subscribe(
       res => {
         this.profile=res.User;
-        let currDate = new Date();
        this.getImage().subscribe(x => this.imgURL = x)
       },
       err => {
@@ -56,15 +66,16 @@ export class ProyectCommentsEditorComponent implements OnInit {
   }
 
 
-
-
   enviarComentario(){
-      this.authService.newComment(this.comentario)
+    console.log('Id que viene de parent: '+this.id);
+    this.comentario.id_proyecto=this.id;
+    console.log(this.comentario.id_proyecto);
+    this.actualizarComentarios();
+    this.authService.newComment(this.comentario)
       .subscribe(
         res =>{
-          alert("success");
-
-          if(res.estado=='commentSuccess'){
+          if(res.estado=='CommentSuccess'){
+            this.comentario.cuerpo='';
             Swal.fire("Exitoso", "Comentario Guardado", "success");
             //this.router.navigate(['/profile']);
           }else{
@@ -76,12 +87,15 @@ export class ProyectCommentsEditorComponent implements OnInit {
           console.log(err);
           Swal.fire("Error", "Hubo un error en el sistema, favor intente de nuevo!", "error");
           //this.router.navigate(['/signup']);
-        }
-      )
-
-
+      }
+    )
   }
   getImage(): Observable<SafeResourceUrl> {
     return  this.authService.getProfilePic();
+  }
+
+  actualizarComentarios(){
+    this.comentario.nombre = this.profile.username;
+    this.newCommentEvent.emit(this.comentario);
   }
 }

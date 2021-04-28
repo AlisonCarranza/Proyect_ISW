@@ -11,8 +11,10 @@ router.post('/api/proyect-comments-editor', async (req, res)=>{
       if (User = await user.findOne({token})){
         const comment = new Comment({
             email: User.email,
+            nombre:User.username,
             cuerpo: req.body.cuerpo,
-            fecha_creacion: req.body.fecha_creacion
+            fecha_creacion: new Date(Date.now()).toISOString(),
+            id_proyecto: req.body.id_proyecto
           });
           console.log(comment);
         await comment.save();

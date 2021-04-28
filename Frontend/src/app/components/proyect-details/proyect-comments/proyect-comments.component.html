@@ -1,11 +1,11 @@
 <div class="">
-  <div class="d-flex justify-content-start">
+  <abe-proyect-comments-editor [id]="this.id_proyecto.id" (newCommentEvent)="addComentario($event)"></abe-proyect-comments-editor>
+  <div class="d-flex justify-content-start" *ngFor="let comm of comentarioPrevio">
     <img class="rounded-circle img-fluid" src={{imgUrl}} alt="" id="profile-pic">
     <label class="d-flex flex-column bd-highlight mb-3">
-      <label class="p-2" ><h6>&nbsp;&nbsp;Carrie&nbsp;&nbsp;03/04/2021 </h6></label>
-      <p class="p-2" name="name" rows="8" cols="80" id="commentBody">{{this.comentarioAnterior.cuerpo}}</p>
+      <label class="p-2 d-flex justify-content-start" ><h6>&nbsp;&nbsp;{{comm.nombre}}&nbsp;&nbsp;</h6>{{comm.fecha_creacion}} </label>
+      <p class="p-2" name="name" rows="8" cols="80" id="commentBody">{{comm.cuerpo}}</p>
       <label class="p-2" ></label>
     </label>
   </div>
 </div>
-<abe-proyect-comments-editor></abe-proyect-comments-editor>
