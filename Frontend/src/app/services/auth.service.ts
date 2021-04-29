@@ -97,6 +97,9 @@ export class AuthService {
     console.log(id_proyecto);
     return this.http.post<any>(this.URL +'/get-comments',id_proyecto);
   }
+  getProyecto(id){
+    return this.http.get<any[]>(this.URL+'/prueba/:'+id);
+  }
 
 
 }

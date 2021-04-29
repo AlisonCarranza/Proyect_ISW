@@ -17,12 +17,12 @@ export class SearchProfComponent implements OnInit {
 //elementos a mostrar en la tabla del html
   elements: any = [];
 //Arreglo de cabeceras de la tabla
-  headElements = ['Nombre', 'Correo', 'Dirección', 'Profesión', 'Tecnologías', 'Experiencia'];
+  headElements = ['Nombre', 'Apellido', 'Correo','Dirección', 'Profesión', 'Tecnologías', 'Experiencia'];
 //variable para la busqueda
   searchText: string = '';
 //variable para el Datasource de la tabla
   previous: string;
-/* variable para la cantidad de documentos de la base y asi saber el tamaño 
+/* variable para la cantidad de documentos de la base y asi saber el tamaño
   que tendra el arreglo elements*/
   docs:number;
 //Arreglo para almacenar los datos recibidos de la consulta a la base
@@ -44,9 +44,9 @@ constructor(
 ngOnInit() {
 if(!this.authService.loggedIn()){
   this.router.navigate(['/signin']);
-}else { 
+}else {
 
-/*Llamado a la funcion que trae la consulta del backend, lleva un parametro (this.elements) 
+/*Llamado a la funcion que trae la consulta del backend, lleva un parametro (this.elements)
   porque en el servicio "auth" deje la funcion como si fuese post, en realidad deberia ser
   get y no deberia llevar ningun parametro asi que no se sorprendan por ver eso ahi*/
 this.authService.searchProf()
@@ -61,12 +61,12 @@ this.authService.searchProf()
     //console.log('muestra los proyectos',this.professionals);
     //Llamado a la funcion que llena los elementos a mostrar en la tabla
     this.fillItems(this.docs);
-    
+
   },
   err=>{console.log(err)}
 );
-}  
-  
+}
+
 }
 
 fillItems(limit:number){
@@ -96,10 +96,10 @@ searchItems() {
       this.elements = this.mdbTable.getDataSource();
   }
   if (this.searchText) {
-    /*Busqueda dentro de los datos de la tabla, si se desea agregar un nuevo campo a la busqueda, 
+    /*Busqueda dentro de los datos de la tabla, si se desea agregar un nuevo campo a la busqueda,
       Solo hay que agregar al arreglo de la funcion el nombre del indice usado en fillItems()
       para el campo que se desea incluir en la busqueda*/
-      this.elements = this.mdbTable.searchLocalDataByMultipleFields(this.searchText, ['Nombre', 'Correo', 'Tecnologias', 'Profesion']);
+      this.elements = this.mdbTable.searchLocalDataByMultipleFields(this.searchText, ['Nombre', 'Apellido','Correo', 'Tecnologias', 'Profesion']);
       this.mdbTable.setDataSource(prev);
   }
 }

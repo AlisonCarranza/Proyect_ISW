@@ -67,9 +67,9 @@ export class ProyectCommentsEditorComponent implements OnInit {
 
 
   enviarComentario(){
-    console.log('Id que viene de parent: '+this.id);
+    //console.log('Id que viene de parent: '+this.id);
     this.comentario.id_proyecto=this.id;
-    console.log(this.comentario.id_proyecto);
+    //console.log(this.comentario.id_proyecto);
     this.actualizarComentarios();
     this.authService.newComment(this.comentario)
       .subscribe(

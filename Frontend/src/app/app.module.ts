@@ -1,4 +1,5 @@
 //Import de dependencias
+import { CommonModule } from "@angular/common";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -10,6 +11,8 @@ import {HttpClientModule, HTTP_INTERCEPTORS, HttpClient} from '@angular/common/h
 import { Observable } from "rxjs";
 import { ComboBoxModule } from '@syncfusion/ej2-angular-dropdowns';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import {MatCardModule} from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 //Imports de componentes y servicios
 import { AuthGuard } from "./guards/auth.guard";
@@ -32,7 +35,7 @@ import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.
 import { EnlaceRegistroComponent } from './components/enlace-registro/enlace-registro.component';
 import { ProyectCommentsEditorComponent } from './components/proyect-details/proyect-comments-editor/proyect-comments-editor.component';
 import { ProyectCommentsComponent } from './components/proyect-details/proyect-comments/proyect-comments.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +57,8 @@ import { ProyectCommentsComponent } from './components/proyect-details/proyect-c
 
   ],
   imports: [
+
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserModule,
@@ -63,7 +68,10 @@ import { ProyectCommentsComponent } from './components/proyect-details/proyect-c
     ReactiveFormsModule,
     ComboBoxModule,
     FormsModule,
-    ReactiveFormsModule
+    MatCardModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
+    NgbModule
   ],
   providers: [
     AuthService,
