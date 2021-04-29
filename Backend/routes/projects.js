@@ -10,7 +10,7 @@ const project = require('../models/projectModel');
 router.get('/api/projects', async(req, res)=>{
     console.log('peticion del backend');
     try{
-        const proyecto = await project.find({},{_id:0});
+        const proyecto = await project.find({});
         const Project = await project.countDocuments();
         console.log(project);
         return res.json({proyecto, Project});
