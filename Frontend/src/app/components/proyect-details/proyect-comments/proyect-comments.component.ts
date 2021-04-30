@@ -34,7 +34,7 @@ export class ProyectCommentsComponent implements OnInit {
   id_proyecto={     //objeto para poder recibir el objeto de comentarios
       id:''
   }
-  //imgUrl="https://comicvine1.cbsistatic.com/uploads/scale_small/1/14487/7767617-db726ed6-c3ba-47ac-ab77-bf29614bce2d.jpeg";
+  
   imgURL: any;
   ngOnInit(): void {
     this.id_proyecto.id=this.idComentario;
@@ -54,8 +54,6 @@ export class ProyectCommentsComponent implements OnInit {
         err=>{console.log('error al mostrar proyectos',err)}
     );
   }
-
-
 
 
   addComentario(comentario) {

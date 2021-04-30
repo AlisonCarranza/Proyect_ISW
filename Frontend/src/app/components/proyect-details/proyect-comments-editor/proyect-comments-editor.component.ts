@@ -42,6 +42,7 @@ export class ProyectCommentsEditorComponent implements OnInit {
     fecha_creacion: null,
     id_proyecto: "",
   }
+  emptyCuerpo=false;
 
   ngOnInit(): void {
     this.authService.getProfile()
@@ -60,26 +61,32 @@ export class ProyectCommentsEditorComponent implements OnInit {
     )
   }
 
-
   enviarComentario(){
-    this.comentario.id_proyecto=this.id;
-    this.actualizarComentarios();
-    this.authService.newComment(this.comentario)
-      .subscribe(
-        res =>{
-          if(res.estado=='CommentSuccess'){
-            this.comentario.cuerpo='';
-            Swal.fire("Exitoso", "Comentario Guardado", "success");
-          }else{
-            Swal.fire("Error", "Hubo un error en los datos ingresados, verifique cada uno de ellos!", "warning");
-          }
+    this.emptyCuerpo=false;
+    if (this.comentario.cuerpo=="") {
+      this.emptyCuerpo=true;
+    } else {
+      this.comentario.id_proyecto=this.id;
+      this.actualizarComentarios();
+      this.authService.newComment(this.comentario)
+        .subscribe(
+          res =>{
+            if(res.estado=='CommentSuccess'){
+              this.comentario.cuerpo='';
+              Swal.fire("Exitoso", "Comentario Guardado", "success");
+            }else{
+              Swal.fire("Error", "Hubo un error en los datos ingresados, verifique cada uno de ellos!", "warning");
+            }
 
-        },
-        err =>{
-          console.log(err);
-          Swal.fire("Error", "Hubo un error en el sistema, favor intente de nuevo!", "error");
-      }
-    )
+          },
+          err =>{
+            console.log(err);
+            Swal.fire("Error", "Hubo un error en el sistema, favor intente de nuevo!", "error");
+        }
+      )
+
+    }
+
   }
   getImage(): Observable<SafeResourceUrl> {
     return  this.authService.getProfilePic();
