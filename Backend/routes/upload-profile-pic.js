@@ -3,6 +3,7 @@ const path = require('path');
 const { unlink } = require('fs-extra');
 const router = Router();
 var multer = require("multer");
+//var url = require ('../upload')
 const user = require('../models/usersModel');
 const jwt = require('jsonwebtoken');
 
@@ -10,7 +11,8 @@ var dir='';
 //../routes/upload
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, './upload')
+        //Cambiar esta ruta por la que se desea utilizar
+        cb(null, 'C:/Users/Administrator/Documents/Proyect_ISW/Backend/upload')
     },
     filename: function(req, file, cb) {
         name=req.query.id + Date.now() + '.jpg';
@@ -33,29 +35,15 @@ const upload = multer({
     }
 })
 
-
-router.get('/api/profile-pic',verifyToken, async (req, res) => {
-    try {
-        let token = req.headers.authorization.split(' ')[1];
-        const User = await user.findOne({token});
-        const imageName = User.picPerfil; 
-        const imagePath = path.join(__dirname, "../upload", imageName)
-        return res.sendFile(imagePath);
-    } catch (error) {
-        console.log(error)
-        return res.status(401).json({estado:'Error'})      
-    } 
-});
-
 router.post('/api/upload-profile-pic', upload.single('file'), async(req, res) => {
     try {
         let token = req.headers.authorization.split(' ')[1];
         const User = await user.findOne({token});
-        const perfilPath = path.join(__dirname, "../upload", User.picPerfil);          
+        //Se colocó la ruta especifica debido a que al usar la relativa presentaba inconsistencia
+        const perfilPath = path.join(__dirname, "C:/Users/Administrator/Documents/Proyect_ISW/Backend/upload", User.picPerfil);          
             email = User.email; 
             if(await user.updateOne({email},{$set:{picPerfil:dir}})){
-                //console.log('Hola2')
-                defaultPath=path.join(__dirname, "../upload/Default.png")
+                defaultPath=path.join(__dirname, "C:/Users/Administrator/Documents/Proyect_ISW/Backend/upload/Default.png")
                 if(perfilPath!=defaultPath){
                     unlink(perfilPath);
                 }
@@ -69,6 +57,19 @@ router.post('/api/upload-profile-pic', upload.single('file'), async(req, res) =>
         return res.status(401).json({estado:'Error'})
     }
 
+});
+
+router.get('/api/profile-pic',verifyToken, async (req, res) => {
+    try {
+        let token = req.headers.authorization.split(' ')[1];
+        const User = await user.findOne({token});
+        const imageName = User.picPerfil; 
+        const imagePath = path.join(__dirname, "../upload", imageName)
+        return res.sendFile(imagePath);
+    } catch (error) {
+        console.log(error)
+        return res.status(401).json({estado:'Error'})      
+    } 
 });
 
 async function verifyToken(req, res, next) {
