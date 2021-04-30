@@ -47,15 +47,38 @@ router.get('/api/profile-pic',verifyToken, async (req, res) => {
     }
 });
 
+
+const usersModel = require('../models/usersModel');
+
+
+router.post('/api/profile-pic-comments',verifyToken, async (req, res) => {
+    try {
+        let token = req.headers.authorization.split(' ')[1];
+        //const User = await user.findOne({token});
+        console.log('Id de usario para comm:');
+        console.log(req.body.id_usuario);
+        const User = await user.findOne({_id:req.body.id_usuario});  //ObjectId(req.body.id_usario)
+        console.log(User.picPerfil);
+        const countusers = await user.countDocuments();
+        const imageName =User.picPerfil;
+        const imagePath = path.join(__dirname, "../upload", imageName)
+        console.log(imagePath);
+        return res.sendFile(imagePath);
+    } catch (error) {
+        console.log(error)
+        return res.status(401).json({estado:'Error'})
+    }
+});
+
+
 router.post('/api/upload-profile-pic', upload.single('file'), async(req, res) => {
     try {
         let token = req.headers.authorization.split(' ')[1];
         const User = await user.findOne({token});
-        const perfilPath = path.join(__dirname, "../upload", User.picPerfil);
+        const perfilPath = path.join(__dirname, "/home/jamz/Paratus/Proyect_ISW/Backend/upload/", User.picPerfil);
             email = User.email;
             if(await user.updateOne({email},{$set:{picPerfil:dir}})){
-                //console.log('Hola2')
-                defaultPath=path.join(__dirname, "../upload/Default.png")
+                defaultPath=path.join(__dirname, "/home/jamz/Paratus/Proyect_ISW/Backend/upload/Default.PNG")
                 if(perfilPath!=defaultPath){
                     unlink(perfilPath);
                 }

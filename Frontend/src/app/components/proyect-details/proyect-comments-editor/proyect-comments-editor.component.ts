@@ -23,8 +23,7 @@ export class ProyectCommentsEditorComponent implements OnInit {
 
   @Input() id: string; //Decora propiedad con Input
   @Output() newCommentEvent = new EventEmitter<any>();  //envia informacion al comentario para actualizar
-
-
+  @Output() newImg = new EventEmitter<any>();
 
   constructor(
     public authService: AuthService,
@@ -41,19 +40,15 @@ export class ProyectCommentsEditorComponent implements OnInit {
     nombre: '',
     cuerpo: '',
     fecha_creacion: null,
-    id_proyecto: ''
-    //id_proyecto: ''
+    id_proyecto: "",
   }
-  //fecha= new Date();
-
-
 
   ngOnInit(): void {
     this.authService.getProfile()
     .subscribe(
       res => {
         this.profile=res.User;
-       this.getImage().subscribe(x => this.imgURL = x)
+       this.getImage().subscribe(x => this.imgURL = x);
       },
       err => {
         if (err instanceof HttpErrorResponse) {
@@ -67,9 +62,7 @@ export class ProyectCommentsEditorComponent implements OnInit {
 
 
   enviarComentario(){
-    //console.log('Id que viene de parent: '+this.id);
     this.comentario.id_proyecto=this.id;
-    //console.log(this.comentario.id_proyecto);
     this.actualizarComentarios();
     this.authService.newComment(this.comentario)
       .subscribe(
@@ -77,7 +70,6 @@ export class ProyectCommentsEditorComponent implements OnInit {
           if(res.estado=='CommentSuccess'){
             this.comentario.cuerpo='';
             Swal.fire("Exitoso", "Comentario Guardado", "success");
-            //this.router.navigate(['/profile']);
           }else{
             Swal.fire("Error", "Hubo un error en los datos ingresados, verifique cada uno de ellos!", "warning");
           }
@@ -86,7 +78,6 @@ export class ProyectCommentsEditorComponent implements OnInit {
         err =>{
           console.log(err);
           Swal.fire("Error", "Hubo un error en el sistema, favor intente de nuevo!", "error");
-          //this.router.navigate(['/signup']);
       }
     )
   }
@@ -97,5 +88,6 @@ export class ProyectCommentsEditorComponent implements OnInit {
   actualizarComentarios(){
     this.comentario.nombre = this.profile.username;
     this.newCommentEvent.emit(this.comentario);
+    this.newImg.emit(this.imgURL)
   }
 }

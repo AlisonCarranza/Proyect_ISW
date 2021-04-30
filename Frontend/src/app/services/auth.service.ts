@@ -60,6 +60,17 @@ export class AuthService {
       );
   }
 
+  getProfilePicComments(userId){
+    return this.http.post(this.URL+'/profile-pic-comments',userId,{ responseType: 'blob' }) //{ responseType: 'blob' },userId)
+      .pipe(
+        map(x => {
+          const urlToBlob = window.URL.createObjectURL(x) // get a URL for the blob
+          return this.sanitizer.bypassSecurityTrustResourceUrl(urlToBlob); // tell Anuglar to trust this value
+        }),
+      );
+  }
+
+
   editProfile(user){
     return this.http.post<any>(this.URL + '/edit-profile', user);
   }
@@ -94,7 +105,7 @@ export class AuthService {
   }
 
   getComments(id_proyecto){
-    console.log(id_proyecto);
+    //console.log(id_proyecto);
     return this.http.post<any>(this.URL +'/get-comments',id_proyecto);
   }
   getProyecto(id){

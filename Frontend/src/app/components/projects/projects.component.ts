@@ -89,8 +89,8 @@ comprobarUsuario(){
 /* Permite llenar el arreglo elements para poder mostrar en pantalla determinados campos de los proyectos*/
 fillItems(){
   this.projects.forEach((project,id) => {
-    console.log(project.email);
-    console.log(this.emailUser);
+    //console.log(project.email);
+    //console.log(this.emailUser);
 
     if(project.email == this.emailUser){
       this.elements.push({
@@ -113,8 +113,6 @@ fillItems(){
 
 //Funcion para traer la informacion de un proyecto en especifico.
 mostrarProyecto(content,id){
-  console.log('Id::::')
-  console.log(this.elements);
   this.open(content);
   this.idElement=parseInt(id);
   //console.log(this.elements.Identificador)

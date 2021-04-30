@@ -7,6 +7,7 @@ const commentSchema = new Schema({
     email: String,
     fecha_creacion: Date,
     id_proyecto: String,
+    id_usuario: String
   });
 
   module.exports=model('comment', commentSchema);
