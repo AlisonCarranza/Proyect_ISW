@@ -36,6 +36,7 @@ export class VerificationComponent implements OnInit {
             Swal.fire("Error", "Hubo un fallo en el sistema, por favor intente de nuevo", "warning");
             this.router.navigate(['/verification']);
           }else if(res.estado=='Hecho' && res.type=='dev'){
+            localStorage.setItem('token', res.token);
             Swal.fire("Cuenta Verificada", "Gracias por registrarse con nosotros, su cuenta ha sido activada", "success");
             this.router.navigate(['/profile-dev']);
           }else{

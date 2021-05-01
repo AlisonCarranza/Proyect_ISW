@@ -38,7 +38,6 @@ const upload = multer({
 
 router.post('/api/upload-profile-pic-dev', upload.single('file'), async(req, res) => {
     try {
-        console.log ('entro')
         let token = req.headers.authorization.split(' ')[1];
         const User = await userdev.findOne({token});
         //Se colocó la ruta especifica debido a que al usar la relativa presentaba inconsistencia

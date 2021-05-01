@@ -35,8 +35,8 @@ import { VerificationComponent } from './components/verification/verification.co
 import { ProfileDevComponent } from './components/profile-dev/profile-dev.component';
 import { EditProfileDevComponent } from './components/edit-profile-dev/edit-profile-dev.component';
 import { ShowProjectsComponent } from './components/show-projects/show-projects.component';
-import { ProfileProfComponent } from './components/profile-prof/profile-prof.component';
 import { ResendCodeComponent } from './components/resend-code/resend-code.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -59,7 +59,6 @@ import { ResendCodeComponent } from './components/resend-code/resend-code.compon
     ProfileDevComponent,
     EditProfileDevComponent,
     ShowProjectsComponent,
-    ProfileProfComponent,
     ResendCodeComponent
   ],
   imports: [

@@ -97,10 +97,6 @@ export class AuthService {
     return this.http.get<any>(this.URL + '/profile-dev');
   }
 
-  getProfileProf() {
-    return this.http.get<any>(this.URL + '/profile-prof');
-  }
-
   editProfileDev(user){
     return this.http.post<any>(this.URL + '/edit-profile-dev', user);
   }

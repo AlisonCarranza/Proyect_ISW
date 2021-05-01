@@ -129,18 +129,6 @@ router.post('/api/signup-dev', async (req, res)=>{
         }
         
     });
-
-    router.post('/api/profile-prof',verifyToken, async(req, res)=>{
-        try{
-            const {email} = req.body
-            const User = await userdev.findOne({ email:email},{_id:0});
-            return res.json({User});
-        }catch(error){
-            console.log(error)
-        return res.status(401).json({estado:'Error'})  
-            
-        }
-    });
         
     async function verifyToken(req, res, next) {
         try {
