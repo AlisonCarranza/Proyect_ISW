@@ -74,7 +74,7 @@ export class ProfileDevComponent implements OnInit {
   }
 
   goEditarPerfil(){
-    //this.router.navigate(['/edit-profile']);
+    this.router.navigate(['/edit-profile-dev']);
   }
 
   getImage(): Observable<SafeResourceUrl> {

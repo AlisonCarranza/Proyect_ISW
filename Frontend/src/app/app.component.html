@@ -51,6 +51,11 @@
             <a class="nav-link"  routerLink="/profile-dev" routerLinkActive="active">Perfil</a>
           </li>
         </div>
+        <div *ngIf="authService.loggedInDev()">
+          <li class="nav-item" >
+            <a class="nav-link"  routerLink="/profile-dev" routerLinkActive="active">Proyectos</a>
+          </li>
+        </div>
         <!--<div *ngIf="authService.loggedIn()">
           <li class="nav-item" >
             <a class="nav-link"  routerLink="/projects" routerLinkActive="active">Mis Proyectos</a>

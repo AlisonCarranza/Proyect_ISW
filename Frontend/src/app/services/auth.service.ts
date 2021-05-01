@@ -87,6 +87,7 @@ export class AuthService {
   editProfile(user){
     return this.http.post<any>(this.URL + '/edit-profile', user);
   }
+
   //Estado del profesional
   userState(){
     return this.http.get<any>(this.URL + '/user-state');
@@ -94,6 +95,10 @@ export class AuthService {
 
   getProfileDev() {
     return this.http.get<any>(this.URL + '/profile-dev');
+  }
+
+  editProfileDev(user){
+    return this.http.post<any>(this.URL + '/edit-profile-dev', user);
   }
 
   uploadProfileDev(profile, id){

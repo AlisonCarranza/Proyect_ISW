@@ -17,7 +17,8 @@ import { EditarPerfilComponent } from "./components/editar-perfil/editar-perfil.
 import { EnlaceRegistroComponent } from "./components/enlace-registro/enlace-registro.component";
 import { SignupDevComponent } from "./components/signup-dev/signup-dev.component";
 import { VerificationComponent } from "./components/verification/verification.component";
-import { ProfileDevComponent } from "./components/profile-dev/profile-dev.component"
+import { ProfileDevComponent } from "./components/profile-dev/profile-dev.component";
+import { EditProfileDevComponent } from "./components/edit-profile-dev/edit-profile-dev.component";
 
 const routes: Routes = [
   {
@@ -83,6 +84,12 @@ const routes: Routes = [
   {
     path: 'profile-dev',
     component: ProfileDevComponent,
+    //canActivate: [AuthGuard]
+  },
+
+  {
+    path:'edit-profile-dev',
+    component: EditProfileDevComponent,
     //canActivate: [AuthGuard]
   },
 

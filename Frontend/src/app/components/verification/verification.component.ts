@@ -37,7 +37,7 @@ export class VerificationComponent implements OnInit {
             this.router.navigate(['/verification']);
           }else if(res.estado=='Hecho' && res.type=='dev'){
             Swal.fire("Cuenta Verificada", "Gracias por registrarse con nosotros, su cuenta ha sido activada", "success");
-            //this.router.navigate(['/profile']);
+            this.router.navigate(['/profile-dev']);
           }else{
           Swal.fire("Email Sin Verificar", "Hubo un error con el código", "warning");
           this.router.navigate(['/verification']);

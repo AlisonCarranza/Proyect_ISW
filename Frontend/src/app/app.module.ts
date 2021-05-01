@@ -33,6 +33,7 @@ import { EnlaceRegistroComponent } from './components/enlace-registro/enlace-reg
 import { SignupDevComponent } from './components/signup-dev/signup-dev.component';
 import { VerificationComponent } from './components/verification/verification.component';
 import { ProfileDevComponent } from './components/profile-dev/profile-dev.component';
+import { EditProfileDevComponent } from './components/edit-profile-dev/edit-profile-dev.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ProfileDevComponent } from './components/profile-dev/profile-dev.compon
     EnlaceRegistroComponent,
     SignupDevComponent,
     VerificationComponent,
-    ProfileDevComponent
+    ProfileDevComponent,
+    EditProfileDevComponent
   ],
   imports: [
     BrowserModule,
