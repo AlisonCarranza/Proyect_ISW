@@ -34,6 +34,7 @@ import { SignupDevComponent } from './components/signup-dev/signup-dev.component
 import { VerificationComponent } from './components/verification/verification.component';
 import { ProfileDevComponent } from './components/profile-dev/profile-dev.component';
 import { EditProfileDevComponent } from './components/edit-profile-dev/edit-profile-dev.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { EditProfileDevComponent } from './components/edit-profile-dev/edit-prof
     ReactiveFormsModule,
     ComboBoxModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [
     AuthService, 

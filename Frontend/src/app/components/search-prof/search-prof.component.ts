@@ -3,6 +3,10 @@ import { Component, OnInit, HostListener, ViewChild,AfterViewInit, ChangeDetecto
 import {MdbTableDirective, MdbTablePaginationComponent} from 'angular-bootstrap-md';
 import {AuthService} from '../../services/auth.service';
 import { Router } from "@angular/router";
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
+import { Observable } from "rxjs";
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'abe-search-prof',
@@ -16,6 +20,8 @@ export class SearchProfComponent implements OnInit {
 
 //elementos a mostrar en la tabla del html
   elements: any = [];
+//indice correspondiente del array elements
+idElement:any;
 //Arreglo de cabeceras de la tabla
   headElements = ['Nombre', 'Correo', 'Dirección', 'Profesión', 'Tecnologías', 'Experiencia'];
 //variable para la busqueda
@@ -31,7 +37,13 @@ export class SearchProfComponent implements OnInit {
     correo:''
   }
 
+//modal
+closeResult = '';  
+
+imgURL: any;
+
 constructor(
+  private modalService: NgbModal,
   private cdRef: ChangeDetectorRef,
   private authService: AuthService,
   private router: Router) { }
@@ -61,7 +73,8 @@ this.authService.searchProf()
     //console.log('muestra los proyectos',this.professionals);
     //Llamado a la funcion que llena los elementos a mostrar en la tabla
     this.fillItems(this.docs);
-    
+    //relacionado con la obtencion de la imagen de usuario
+    this.getImage().subscribe(x => {this.imgURL = x})
   },
   err=>{console.log(err)}
 );
@@ -82,7 +95,10 @@ for (let i = 0; i < limit; i++) {
     Direccion: this.professionals[i].direccion,
     Profesion: this.professionals[i].profesion,
     Tecnologias: this.professionals[i].tecnologias,
-    Experiencia: this.professionals[i].experiencia
+    Experiencia: this.professionals[i].experiencia,
+    Telefono: this.professionals[i].telefono,
+    PicPerfil: this.professionals[i].picPerfil,
+    NombreUsuario: this.professionals[i].username
   });
 }
 this.mdbTable.setDataSource(this.elements);
@@ -103,5 +119,38 @@ searchItems() {
       this.mdbTable.setDataSource(prev);
   }
 }
+
+
+//mostrar el perfil del desarrollador seleccionado
+mostrarProfesional(content,id){
+  console.log('ver prof');
+  this.open(content);
+  this.idElement=parseInt(id);
+}
+
+//modal
+open(content) {
+  this.modalService.open(content,{ size: 'lg' }).result.then((result) => {
+    this.closeResult = `Closed with: ${result}`;
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+}
+
+private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return `with: ${reason}`;
+  }
+}
+
+//relacionado con la foto de perfil
+getImage(): Observable<SafeResourceUrl> {
+  return  this.authService.getProfilePicDev();
+}
+
 
 }
