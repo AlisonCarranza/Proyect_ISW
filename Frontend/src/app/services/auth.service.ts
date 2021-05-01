@@ -18,6 +18,7 @@ export class AuthService {
     private sanitizer: DomSanitizer
     ) {}
 
+  //Cliente
   loggedIn() {
     return !!localStorage.getItem('token');
   }
@@ -31,8 +32,30 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  //Profesional
+  loggedInDev() {
+    return !!localStorage.getItem('dev');
+  }
+
+  logoutDev() {
+    localStorage.removeItem('dev');
+    this.router.navigate(['/signin']);
+  }
+
+  getTokenDev() {
+    return localStorage.getItem('dev');
+  }
+
   signUp(user){
     return this.http.post<any>(this.URL + '/signup', user);
+  }
+
+  signUpDev(user){
+    return this.http.post<any>(this.URL + '/signup-dev', user);
+  }
+
+  verification(user){
+    return this.http.post<any>(this.URL + '/verification', user);
   }
 
   signIn(user){
@@ -75,6 +98,34 @@ export class AuthService {
     return this.http.post<any>(this.URL + '/edit-profile', user);
   }
 
+  //Estado del profesional
+  userState(){
+    return this.http.get<any>(this.URL + '/user-state');
+  }
+
+  getProfileDev() {
+    return this.http.get<any>(this.URL + '/profile-dev');
+  }
+
+  editProfileDev(user){
+    return this.http.post<any>(this.URL + '/edit-profile-dev', user);
+  }
+
+  uploadProfileDev(profile, id){
+
+    return this.http.post<any>(this.URL + '/upload-profile-pic-dev?id='+id, profile);
+  }
+
+  getProfilePicDev(){
+    return this.http.get(this.URL+'/profile-pic-dev', { responseType: 'blob' })
+      .pipe(
+        map(x => {
+          const urlToBlob = window.URL.createObjectURL(x) // get a URL for the blob
+          return this.sanitizer.bypassSecurityTrustResourceUrl(urlToBlob); // tell Anuglar to trust this value
+        }),
+      );
+  }
+
   recPass(user){
     return this.http.post<any>(this.URL + '/rec-password', user);
   }
@@ -85,6 +136,10 @@ export class AuthService {
 
   changePassword(user){
     return this.http.post<any>(this.URL + '/change-password', user);
+  }
+
+  resendCode(){
+    return this.http.get<any>(this.URL + '/resend-code');
   }
 
   NewProjectForm(titulo){

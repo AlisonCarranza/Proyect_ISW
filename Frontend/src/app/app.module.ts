@@ -33,9 +33,17 @@ import { SearchProfComponent } from './components/search-prof/search-prof.compon
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
 import { EnlaceRegistroComponent } from './components/enlace-registro/enlace-registro.component';
+import { SignupDevComponent } from './components/signup-dev/signup-dev.component';
+import { VerificationComponent } from './components/verification/verification.component';
+import { ProfileDevComponent } from './components/profile-dev/profile-dev.component';
+import { EditProfileDevComponent } from './components/edit-profile-dev/edit-profile-dev.component';
+import { ShowProjectsComponent } from './components/show-projects/show-projects.component';
+import { ResendCodeComponent } from './components/resend-code/resend-code.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//comentarios
 import { ProyectCommentsEditorComponent } from './components/proyect-details/proyect-comments-editor/proyect-comments-editor.component';
 import { ProyectCommentsComponent } from './components/proyect-details/proyect-comments/proyect-comments.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,9 +60,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SidebarComponent,
     EditarPerfilComponent,
     EnlaceRegistroComponent,
+    SignupDevComponent,
+    VerificationComponent,
+    ProfileDevComponent,
+    EditProfileDevComponent,
+    ShowProjectsComponent,
+    ResendCodeComponent,
     ProyectCommentsEditorComponent,
     ProyectCommentsComponent
-
   ],
   imports: [
 

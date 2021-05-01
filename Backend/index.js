@@ -16,9 +16,13 @@ app.use(cors());
 
 //permite el acceso a los parametros enviados mediante post , es decir al cuerpo de la peticion.
 app.use (require ('./routes/user'));
+app.use (require ('./routes/userdev'));
+app.use (require ('./routes/verification'));
 app.use (require ('./routes/login'));
 app.use (require ('./routes/edit-profile'));
+app.use (require ('./routes/edit-profile-dev'));
 app.use (require ('./routes/upload-profile-pic'));
+app.use (require ('./routes/upload-profile-pic-dev'));
 app.use (require ('./routes/change-password'));
 app.use (require ('./routes/rec-password'));
 app.use (require ('./routes/recover-password'));

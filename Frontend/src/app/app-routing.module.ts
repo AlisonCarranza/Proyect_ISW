@@ -15,9 +15,16 @@ import { ProjectsComponent} from "./components/projects/projects.component";
 import { SearchProfComponent } from "./components/search-prof/search-prof.component";
 import { EditarPerfilComponent } from "./components/editar-perfil/editar-perfil.component";
 import { EnlaceRegistroComponent } from "./components/enlace-registro/enlace-registro.component";
+import { SignupDevComponent } from "./components/signup-dev/signup-dev.component";
+import { VerificationComponent } from "./components/verification/verification.component";
+import { ProfileDevComponent } from "./components/profile-dev/profile-dev.component";
+import { EditProfileDevComponent } from "./components/edit-profile-dev/edit-profile-dev.component";
+import { ShowProjectsComponent } from "./components/show-projects/show-projects.component";
+import { ResendCodeComponent } from "./components/resend-code/resend-code.component";
+
+//para comentarios
 import { ProyectCommentsComponent } from './components/proyect-details/proyect-comments/proyect-comments.component';
 import { ProyectCommentsEditorComponent } from './components/proyect-details/proyect-comments-editor/proyect-comments-editor.component';
-
 const routes: Routes = [
   {
     path: '',
@@ -50,6 +57,25 @@ const routes: Routes = [
   },
 
   {
+    path: 'signup-dev',
+    component: SignupDevComponent
+
+  },
+
+  {
+    path: 'verification',
+    component: VerificationComponent
+
+  },
+
+  {
+    path: 'resend-code',
+    component: ResendCodeComponent
+
+  },
+
+
+  {
     path: 'signin',
     component: LoginComponent
 
@@ -57,14 +83,26 @@ const routes: Routes = [
 
   {
     path: 'profile',
-    component: ProfileComponent
-
+    component: ProfileComponent,
+    //canActivate: [AuthGuard]
   },
 
   {
     path:'edit-profile',
-    component: EditarPerfilComponent
+    component: EditarPerfilComponent,
+    //canActivate: [AuthGuard]
+  },
 
+  {
+    path: 'profile-dev',
+    component: ProfileDevComponent,
+    //canActivate: [AuthGuard]
+  },
+
+  {
+    path:'edit-profile-dev',
+    component: EditProfileDevComponent,
+    //canActivate: [AuthGuard]
   },
 
   {
@@ -88,6 +126,12 @@ const routes: Routes = [
   {
     path: 'projects',
     component: ProjectsComponent
+
+  },
+
+  {
+    path: 'show-projects',
+    component: ShowProjectsComponent
 
   },
 

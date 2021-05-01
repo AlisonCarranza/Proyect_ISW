@@ -55,7 +55,24 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', res.token);
           Swal.fire("Bienvenido","", "success");
           this.router.navigate(['/profile']);
-        }       
+        }     
+        //usuario profesional
+        else if(res.estado=='hecho'&& res.type=='dev'){
+          localStorage.setItem('dev', res.token);
+          Swal.fire("Bienvenido","", "success");
+          this.router.navigate(['/profile-dev']);
+          }else if(res.estado=='password'&&res.type=='dev'){
+            Swal.fire("Error", "Correo o contraseña incorrectos", "warning");
+          }else if(res.estado=='inactivo'&& res.type=='dev'){
+            Swal.fire("Inactivo", "Su usuario esta inactivo, debe activarlo para ingresar", "warning");
+            this.router.navigate(['/verification']);
+          }else if(res.estado=='temporal'&&res.type=='dev'){
+            localStorage.setItem('token', res.token);
+            Swal.fire("Bienvenido", "Ahora puede cambiar su contraseña", "success");
+            this.router.navigate(['/recover-password']); 
+          }else{
+          Swal.fire("Error", "No se pudo encontrar su cuenta, intente de nuevo y verifique los datos ingresados", "warning");
+        }   
       },
       err =>{
         Swal.fire("Error", "Hubo un error en el sistema intente de nuevo", "warning");

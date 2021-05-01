@@ -58,6 +58,7 @@ router.post('/api/signup', async (req, res)=>{
         try {
             let token_l = req.headers.authorization.split(' ')[1];
             if(User= await user.findOne({token:token_l}, {_id:0})){
+                console.log(User)
                 return res.json({User});
             }        
         } catch (error) {
