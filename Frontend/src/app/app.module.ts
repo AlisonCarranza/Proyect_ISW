@@ -34,6 +34,9 @@ import { SignupDevComponent } from './components/signup-dev/signup-dev.component
 import { VerificationComponent } from './components/verification/verification.component';
 import { ProfileDevComponent } from './components/profile-dev/profile-dev.component';
 import { EditProfileDevComponent } from './components/edit-profile-dev/edit-profile-dev.component';
+import { ShowProjectsComponent } from './components/show-projects/show-projects.component';
+import { ProfileProfComponent } from './components/profile-prof/profile-prof.component';
+import { ResendCodeComponent } from './components/resend-code/resend-code.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,10 @@ import { EditProfileDevComponent } from './components/edit-profile-dev/edit-prof
     SignupDevComponent,
     VerificationComponent,
     ProfileDevComponent,
-    EditProfileDevComponent
+    EditProfileDevComponent,
+    ShowProjectsComponent,
+    ProfileProfComponent,
+    ResendCodeComponent
   ],
   imports: [
     BrowserModule,

@@ -12,8 +12,10 @@ router.post('/api/recover-password', verifyToken, async (req, res) => {
             return res.json({estado:'password'});
         }
         let token = req.headers.authorization.split(' ')[1];
+        console.log(token)
         //Usuario profesional
         if(UserDev = await userdev.findOne({token})){
+            console.log ('recuperacion')
             const salt = bcrypt.genSaltSync();
             const hash= bcrypt.hashSync(contrasenaNueva1, salt);
 

@@ -19,6 +19,9 @@ import { SignupDevComponent } from "./components/signup-dev/signup-dev.component
 import { VerificationComponent } from "./components/verification/verification.component";
 import { ProfileDevComponent } from "./components/profile-dev/profile-dev.component";
 import { EditProfileDevComponent } from "./components/edit-profile-dev/edit-profile-dev.component";
+import { ShowProjectsComponent } from "./components/show-projects/show-projects.component";
+import { ProfileProfComponent } from "./components/profile-prof/profile-prof.component";
+import { ResendCodeComponent } from "./components/resend-code/resend-code.component";
 
 const routes: Routes = [
   {
@@ -64,6 +67,13 @@ const routes: Routes = [
   },
 
   {
+    path: 'resend-code',
+    component: ResendCodeComponent
+
+  },
+
+
+  {
     path: 'signin',
     component: LoginComponent
 
@@ -94,6 +104,12 @@ const routes: Routes = [
   },
 
   {
+    path:'profile-prof',
+    component: ProfileProfComponent
+    //canActivate: [AuthGuard]
+  },
+
+  {
     path: 'rec-password',
     component: RecPasswordComponent
 
@@ -114,6 +130,12 @@ const routes: Routes = [
   {
     path: 'projects',
     component: ProjectsComponent
+
+  },
+
+  {
+    path: 'show-projects',
+    component: ShowProjectsComponent
 
   },
 

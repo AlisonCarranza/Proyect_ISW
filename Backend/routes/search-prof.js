@@ -8,8 +8,8 @@ const professionalsModel = require('../models/professionalsModel');
 
 router.get('/api/search-prof', async(req, res)=>{
     try{
-        const profesional = await professional.find({},{_id:0});
-        const Professional = await professional.countDocuments();
+        const profesional = await professional.find({ "$expr": { "$eq":["$estado","activo"] }},{_id:0});
+        const Professional = await professional.countDocuments({ "$expr": { "$eq":["$estado","activo"] }});
         //console.log(profesional);
         return res.json({profesional, Professional});
     }catch(error){
