@@ -32,6 +32,7 @@ import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.
 import { EnlaceRegistroComponent } from './components/enlace-registro/enlace-registro.component';
 import { SignupDevComponent } from './components/signup-dev/signup-dev.component';
 import { VerificationComponent } from './components/verification/verification.component';
+import { ProfileDevComponent } from './components/profile-dev/profile-dev.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { VerificationComponent } from './components/verification/verification.co
     EditarPerfilComponent,
     EnlaceRegistroComponent,
     SignupDevComponent,
-    VerificationComponent
+    VerificationComponent,
+    ProfileDevComponent
   ],
   imports: [
     BrowserModule,

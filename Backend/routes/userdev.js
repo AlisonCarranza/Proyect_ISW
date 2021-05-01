@@ -99,8 +99,8 @@ router.post('/api/signup-dev', async (req, res)=>{
     });
 
 
-    router.get('/api/profile',verifyToken, async (req, res) => {
-    
+    router.get('/api/profile-dev',verifyToken, async (req, res) => {
+        console.log('prueba')
         try {
             let token_l = req.headers.authorization.split(' ')[1];
             if(User= await userdev.findOne({token:token_l}, {_id:0})){

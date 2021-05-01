@@ -51,7 +51,9 @@ router.post('/api/signin', async (req, res) => {
                 return res.json({estado:'password', type:'dev'});
             }
 
-        }else if(User = await user.findOne({email:email_l})){   //Verificacion si es cliente
+        }
+        
+        if(User = await user.findOne({email:email_l})){   //Verificacion si es cliente
             //comparando temporal pass
             if(User.temporal_pass!=""){
                 if(bcrypt.compareSync(password, User.temporal_pass)){

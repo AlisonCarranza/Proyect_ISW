@@ -17,6 +17,7 @@ import { EditarPerfilComponent } from "./components/editar-perfil/editar-perfil.
 import { EnlaceRegistroComponent } from "./components/enlace-registro/enlace-registro.component";
 import { SignupDevComponent } from "./components/signup-dev/signup-dev.component";
 import { VerificationComponent } from "./components/verification/verification.component";
+import { ProfileDevComponent } from "./components/profile-dev/profile-dev.component"
 
 const routes: Routes = [
   {
@@ -69,13 +70,20 @@ const routes: Routes = [
 
   {
     path: 'profile',
-    component: ProfileComponent
-
+    component: ProfileComponent,
+    //canActivate: [AuthGuard]
   },
   
   {
     path:'edit-profile',
-    component: EditarPerfilComponent
+    component: EditarPerfilComponent,
+    //canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'profile-dev',
+    component: ProfileDevComponent,
+    //canActivate: [AuthGuard]
   },
 
   {

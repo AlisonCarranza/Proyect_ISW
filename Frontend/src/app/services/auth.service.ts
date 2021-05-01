@@ -87,6 +87,29 @@ export class AuthService {
   editProfile(user){
     return this.http.post<any>(this.URL + '/edit-profile', user);
   }
+  //Estado del profesional
+  userState(){
+    return this.http.get<any>(this.URL + '/user-state');
+  }  
+
+  getProfileDev() {
+    return this.http.get<any>(this.URL + '/profile-dev');
+  }
+
+  uploadProfileDev(profile, id){
+
+    return this.http.post<any>(this.URL + '/upload-profile-pic-dev?id='+id, profile);  
+  }
+
+  getProfilePicDev(){
+    return this.http.get(this.URL+'/profile-pic-dev', { responseType: 'blob' })
+      .pipe(
+        map(x => {
+          const urlToBlob = window.URL.createObjectURL(x) // get a URL for the blob
+          return this.sanitizer.bypassSecurityTrustResourceUrl(urlToBlob); // tell Anuglar to trust this value
+        }),
+      );
+  }
 
   recPass(user){
     return this.http.post<any>(this.URL + '/rec-password', user);

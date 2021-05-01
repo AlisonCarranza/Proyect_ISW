@@ -21,6 +21,7 @@ app.use (require ('./routes/verification'));
 app.use (require ('./routes/login'));
 app.use (require ('./routes/edit-profile'));
 app.use (require ('./routes/upload-profile-pic'));
+app.use (require ('./routes/upload-profile-pic-dev'));
 app.use (require ('./routes/change-password'));
 app.use (require ('./routes/rec-password'));
 app.use (require ('./routes/recover-password'));

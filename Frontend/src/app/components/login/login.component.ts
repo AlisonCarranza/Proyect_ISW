@@ -39,10 +39,6 @@ export class LoginComponent implements OnInit {
   signIn(){
     this.user.email=this.signin.value.email;
     this.user.password=this.signin.value.password;
-    if(!this.user.email.match(/@unah.hn$/)){
-      Swal.fire("Error", "El correo no se encuentra en la base", "warning");
-      return false;
-    }
     this.authservice.signIn(this.user)
     .subscribe(
       res =>{ 
@@ -64,7 +60,7 @@ export class LoginComponent implements OnInit {
         else if(res.estado=='hecho'&& res.type=='dev'){
           localStorage.setItem('dev', res.token);
           Swal.fire("Bienvenido","", "success");
-          //this.router.navigate(['/profile-driver']);
+          this.router.navigate(['/profile-dev']);
           }else if(res.estado=='password'&&res.type=='dev'){
             Swal.fire("Error", "Correo o contraseña incorrectos", "warning");
           }else if(res.estado=='inactivo'&& res.type=='dev'){
