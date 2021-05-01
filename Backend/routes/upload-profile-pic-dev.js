@@ -11,7 +11,8 @@ var dir='';
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        //Cambiar esta ruta por la que se desea utilizar
+        //Cambiar esta ruta por la que se desea utilizar 
+        //C:/Users/Administrator/Documents/Proyect_ISW/Backend/upload/dev
         cb(null, 'C:/Users/Administrator/Documents/Proyect_ISW/Backend/upload/dev')
     },
     filename: function(req, file, cb) {
@@ -37,6 +38,7 @@ const upload = multer({
 
 router.post('/api/upload-profile-pic-dev', upload.single('file'), async(req, res) => {
     try {
+        console.log ('entro')
         let token = req.headers.authorization.split(' ')[1];
         const User = await userdev.findOne({token});
         //Se colocó la ruta especifica debido a que al usar la relativa presentaba inconsistencia

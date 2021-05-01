@@ -97,6 +97,10 @@ export class AuthService {
     return this.http.get<any>(this.URL + '/profile-dev');
   }
 
+  getProfileProf() {
+    return this.http.get<any>(this.URL + '/profile-prof');
+  }
+
   editProfileDev(user){
     return this.http.post<any>(this.URL + '/edit-profile-dev', user);
   }
@@ -126,6 +130,10 @@ export class AuthService {
 
   changePassword(user){
     return this.http.post<any>(this.URL + '/change-password', user);
+  }
+
+  resendCode(){
+    return this.http.get<any>(this.URL + '/resend-code');
   }
 
   NewProjectForm(titulo){

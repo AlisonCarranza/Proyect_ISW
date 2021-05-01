@@ -67,9 +67,9 @@ export class LoginComponent implements OnInit {
             Swal.fire("Inactivo", "Su usuario esta inactivo, debe activarlo para ingresar", "warning");
             this.router.navigate(['/verification']);
           }else if(res.estado=='temporal'&&res.type=='dev'){
-            localStorage.setItem('dev', res.token);
+            localStorage.setItem('token', res.token);
             Swal.fire("Bienvenido", "Ahora puede cambiar su contraseña", "success");
-            this.router.navigate(['/recover-pass']); 
+            this.router.navigate(['/recover-password']); 
           }else{
           Swal.fire("Error", "No se pudo encontrar su cuenta, intente de nuevo y verifique los datos ingresados", "warning");
         }   

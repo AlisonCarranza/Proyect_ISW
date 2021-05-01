@@ -1,6 +1,6 @@
 const {Router}=require('express');
 const router = Router();
-//const { decrypt } = require('./functions');
+const nodemailer = require('nodemailer');
 const userdev = require('../models/professionalsModel');
 const jwt = require('jsonwebtoken');
 
@@ -49,6 +49,46 @@ router.get('/api/verification', async (req, res) => {
     } catch (error) {
         console.log(error)
         return res.status(401).json({estado:'Error'})
+    }
+});
+
+router.get('/api/resend-code',verifyToken, async (req, res) => {
+    console.log('Hola')
+    let token = req.headers.authorization.split(' ')[1];
+    console.log(token)
+    if (User = await userdev.findOne({token})){
+        try {
+            let token = req.headers.authorization.split(' ')[1];
+            const User = await userdev.findOne({token});
+            const email_l= User.email;
+            const codigoS=User.codigo;
+
+            /*INICIO ENVIO DE CORREO */
+                const transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                    user: 'paratus.unah@gmail.com',
+                    pass: '3-4N}%b*H^'
+                    }  
+                });
+                const mailOptions = {
+                    from: 'paratus.unah@gmail.com',
+                    to: email_l,
+                    subject: 'Codigo de Verificación Paratus',
+                    html: "Gracias por unirse a Paratus<br> Para activar su cuenta puede ingrese el siguiente codigo en la pantalla de verificacion: <br><br><b>" + codigoS+"</b>"
+                };
+                transporter.sendMail(mailOptions, function(error, info){
+                    if (error) {
+                        return res.json({estado:'email'});
+                    } else {
+                        return res.status(200).json({estado:'hecho', token});
+                    }
+                });
+                /*FIN ENVIO DE CORREO*/ 
+
+        } catch (error) {
+            return res.status(401).json({estado:'Error'});
+        }
     }
 });
 

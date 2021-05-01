@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
 
 
 
-const upload = multer({
+const dev = multer({
     storage: storage,
     limits: {
         // Setting Image Size Limit to 5MBs
@@ -35,7 +35,7 @@ const upload = multer({
     }
 })
 
-router.post('/api/upload-profile-pic', upload.single('file'), async(req, res) => {
+router.post('/api/upload-profile-pic', dev.single('file'), async(req, res) => {
     try {
         let token = req.headers.authorization.split(' ')[1];
         const User = await user.findOne({token});

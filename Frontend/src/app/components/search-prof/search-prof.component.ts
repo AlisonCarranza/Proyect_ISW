@@ -23,7 +23,7 @@ export class SearchProfComponent implements OnInit {
 //indice correspondiente del array elements
 idElement:any;
 //Arreglo de cabeceras de la tabla
-  headElements = ['Nombre', 'Correo', 'Dirección', 'Profesión', 'Tecnologías', 'Experiencia'];
+  headElements = ['Nombre', 'Correo', 'Profesión', 'Tecnologías', 'Experiencia'];
 //variable para la busqueda
   searchText: string = '';
 //variable para el Datasource de la tabla
@@ -92,7 +92,6 @@ for (let i = 0; i < limit; i++) {
     Nombre: this.professionals[i].nombre,
     //Apellido: this.professionals[i].apellido,
     Correo: this.professionals[i].email,
-    Direccion: this.professionals[i].direccion,
     Profesion: this.professionals[i].profesion,
     Tecnologias: this.professionals[i].tecnologias,
     Experiencia: this.professionals[i].experiencia,

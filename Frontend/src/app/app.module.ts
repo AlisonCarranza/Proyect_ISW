@@ -36,6 +36,10 @@ import { ProfileDevComponent } from './components/profile-dev/profile-dev.compon
 import { EditProfileDevComponent } from './components/edit-profile-dev/edit-profile-dev.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { ShowProjectsComponent } from './components/show-projects/show-projects.component';
+import { ProfileProfComponent } from './components/profile-prof/profile-prof.component';
+import { ResendCodeComponent } from './components/resend-code/resend-code.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +59,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SignupDevComponent,
     VerificationComponent,
     ProfileDevComponent,
-    EditProfileDevComponent
+    EditProfileDevComponent,
+    ShowProjectsComponent,
+    ProfileProfComponent,
+    ResendCodeComponent
   ],
   imports: [
     BrowserModule,

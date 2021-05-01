@@ -20,7 +20,7 @@ router.post('/api/signin', async (req, res) => {
                         return res.status(200).json({estado:'inactivo',token:token, type:'dev'});
                     }else{
                         const token = User.token;
-                        await user.updateOne({email:email_l},{$set:{estado:"activo"}})
+                        //await user.updateOne({email:email_l},{$set:{estado:"activo"}})
                         return res.status(200).json({estado:'temporal',token:token, type:'dev'});
                     }
                     //comparando pass
