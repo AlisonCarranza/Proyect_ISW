@@ -19,6 +19,7 @@ export class AuthService {
     private sanitizer: DomSanitizer
     ) {}
 
+  //Cliente
   loggedIn() {
     return !!localStorage.getItem('token');
   }
@@ -32,8 +33,30 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  //Profesional
+  loggedInDev() {
+    return !!localStorage.getItem('dev');
+  }
+
+  logoutDev() {
+    localStorage.removeItem('dev');
+    this.router.navigate(['/signin']);
+  }  
+  
+  getTokenDev() {
+    return localStorage.getItem('dev');
+  }
+
   signUp(user){
     return this.http.post<any>(this.URL + '/signup', user);  
+  }
+
+  signUpDev(user){
+    return this.http.post<any>(this.URL + '/signup-dev', user);  
+  }
+
+  verification(user){
+    return this.http.post<any>(this.URL + '/verification', user);  
   }
 
   signIn(user){

@@ -30,6 +30,8 @@ import { SearchProfComponent } from './components/search-prof/search-prof.compon
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
 import { EnlaceRegistroComponent } from './components/enlace-registro/enlace-registro.component';
+import { SignupDevComponent } from './components/signup-dev/signup-dev.component';
+import { VerificationComponent } from './components/verification/verification.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { EnlaceRegistroComponent } from './components/enlace-registro/enlace-reg
     SearchProfComponent,
     SidebarComponent,
     EditarPerfilComponent,
-    EnlaceRegistroComponent
+    EnlaceRegistroComponent,
+    SignupDevComponent,
+    VerificationComponent
   ],
   imports: [
     BrowserModule,

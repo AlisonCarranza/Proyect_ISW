@@ -1,6 +1,7 @@
 const {Router}=require('express');
 const router = Router();
 const user = require('../models/usersModel');
+const userdev = require('../models/professionalsModel');
 const jwt = require('jsonwebtoken');
 const bcrypt = require ('bcrypt-nodejs');
 
@@ -11,6 +12,19 @@ router.post('/api/recover-password', verifyToken, async (req, res) => {
             return res.json({estado:'password'});
         }
         let token = req.headers.authorization.split(' ')[1];
+        //Usuario profesional
+        if(UserDev = await userdev.findOne({token})){
+            const salt = bcrypt.genSaltSync();
+            const hash= bcrypt.hashSync(contrasenaNueva1, salt);
+
+            if(await userdev.updateOne({token},{$set:{password:hash}})){
+                const UserDev = await userdev.findOne({token});
+                if(await userdev.updateOne({token},{$set:{temporal_pass:""}}));
+                return res.status(200).json({estado:'hecho', type:'usuario'});
+            } 
+        }
+        
+        //Usuario cliente
         if(User = await user.findOne({token})){
             const salt = bcrypt.genSaltSync();
             const hash= bcrypt.hashSync(contrasenaNueva1, salt);

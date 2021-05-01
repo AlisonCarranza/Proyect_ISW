@@ -13,8 +13,10 @@ import { ProfileComponent } from "./components/profile/profile.component"
 import { FuncionComponent } from "./components/funcion/funcion.component";
 import { ProjectsComponent} from "./components/projects/projects.component";
 import { SearchProfComponent } from "./components/search-prof/search-prof.component";
-import { EditarPerfilComponent } from "./components/editar-perfil/editar-perfil.component"
-import { EnlaceRegistroComponent } from "./components/enlace-registro/enlace-registro.component"
+import { EditarPerfilComponent } from "./components/editar-perfil/editar-perfil.component";
+import { EnlaceRegistroComponent } from "./components/enlace-registro/enlace-registro.component";
+import { SignupDevComponent } from "./components/signup-dev/signup-dev.component";
+import { VerificationComponent } from "./components/verification/verification.component";
 
 const routes: Routes = [
   {
@@ -44,6 +46,18 @@ const routes: Routes = [
   {
     path: 'signup',
     component: RegistroUsuariosComponent
+
+  },
+
+  {
+    path: 'signup-dev',
+    component: SignupDevComponent
+
+  },
+
+  {
+    path: 'verification',
+    component: VerificationComponent
 
   },
 

@@ -16,22 +16,22 @@
     <!-- Collapsible content -->
     <links>
     <ul class= "navbar-nav ml-auto">
-      <div *ngIf="!authService.loggedIn()">
+      <div *ngIf="!authService.loggedIn() && !authService.loggedInDev()">
         <li class="nav-item">
           <a class="nav-link" routerLink="/home" routerLinkActive="active">Inicio</a>
         </li>
       </div>
-      <div *ngIf="!authService.loggedIn()">
+      <div *ngIf="!authService.loggedIn() && !authService.loggedInDev()">
       <li class="nav-item ">
           <a class="nav-link"  routerLink="/function" routerLinkActive="active">Como Funciona</a>
         </li>
       </div>
-        <div *ngIf="!authService.loggedIn()">
+        <div *ngIf="!authService.loggedIn() && !authService.loggedInDev()">
           <li class="nav-item" >
             <a class="nav-link"  routerLink="/signin" routerLinkActive="active">Iniciar Sesion</a>
           </li>
         </div>
-        <div *ngIf="!authService.loggedIn()">
+        <div *ngIf="!authService.loggedIn() && !authService.loggedInDev()">
           <li class="nav-item" >
             <a class="nav-link"  routerLink="/type-user" routerLinkActive="active">Registrarse</a>
           </li>
@@ -59,6 +59,11 @@
         <div>
           <li class="nav-item" *ngIf="authService.loggedIn();">
             <a class="nav-link" (click)="authService.logout()" routerLink="/signin">Salir</a>
+          </li>
+        </div>
+        <div>
+          <li class="nav-item" *ngIf="authService.loggedInDev();">
+            <a class="nav-link" (click)="authService.logoutDev()" routerLink="/signin">Salir</a>
           </li>
         </div>
     </ul>
